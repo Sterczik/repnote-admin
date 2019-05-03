@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { ServiceTrainings } from '../../services/trainings/trainings'
 
 class TrainingsPage extends Component {
@@ -29,11 +30,9 @@ class TrainingsPage extends Component {
         ) : (
           this.state.trainings.map((training, index) => (
             <div key={index}>
-              <p>{training.id}</p>
-              <p>{training.category.name}</p>
               <p>{training.name}</p>
               <p>{training.user.name}</p>
-              <p>{training.private}</p>
+              <Link to={'/trainings/' + training.id}>Go</Link>
               <hr />
             </div>
           ))

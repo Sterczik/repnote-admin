@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { ServiceUsers } from '../../services/users/users'
 
 class UsersPage extends Component {
@@ -29,12 +30,9 @@ class UsersPage extends Component {
         ) : (
           this.state.users.map((user, index) => (
             <div key={index}>
-              <p>{user.id}</p>
               <p>{user.name}</p>
-              <p>{user.username}</p>
               <p>{user.email}</p>
-              <p>{user.avatar}</p>
-              <p>{user.provider}</p>
+              <Link to={'/users/' + user.id}>Go</Link>
               <hr />
             </div>
           ))
