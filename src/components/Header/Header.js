@@ -6,6 +6,7 @@ const Header = () => (
     <Link to="/">RepNote Admin</Link>
     <Link to="/users">Users</Link>
     <Link to="/trainings">Trainings</Link>
+    <Link to="/trainingCategories">Training Categories</Link>
   </div>
 )
 

@@ -8,6 +8,8 @@ import UsersPage from '../Users/index'
 import UserPage from '../User/index'
 import TrainingsPage from '../Trainings/index'
 import TrainingPage from '../Training/index'
+import TrainingCategoriesPage from '../TrainingCategories/index'
+import TrainingCategoryPage from '../TrainingCategory/index'
 
 export default () => (
   <Switch>
@@ -35,6 +37,16 @@ export default () => (
       exact
       path="/trainings/:id"
       component={TrainingPage}
+    />
+    <Route
+      exact
+      path="/trainingCategories"
+      component={TrainingCategoriesPage}
+    />
+    <Route
+      exact
+      path="/trainingCategories/:id"
+      component={TrainingCategoryPage}
     />
   </Switch>
 )
