@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { ServiceTrainingCategories } from '../../services/trainingCategories/trainingCategories'
 
-class UsersPage extends Component {
+class TrainingCategoriesPage extends Component {
   constructor(props) {
     super(props)
     
     this.state = {
-      categories: []
+      categories: [],
+      category: ''
     }
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -17,6 +20,21 @@ class UsersPage extends Component {
         this.setState({
           categories: data.data
         })
+      })
+  }
+
+  handleChange(e) {
+    const { name, value } = e.target
+    this.setState({ [name]: value })
+  }
+
+  add(category) {
+    ServiceTrainingCategories.addTrainingCategory({ name: category })
+      .then(data => {
+        this.setState(prevState => ({
+          categories: [...prevState.categories, data.data],
+          category: ''
+        }))
       })
   }
 
@@ -36,9 +54,17 @@ class UsersPage extends Component {
             </div>
           ))
         )}
-      </React.Fragment>
+
+        <input
+          type="text"
+          name="category"
+          value={this.state.category}
+          onChange={this.handleChange}
+        />
+        <button onClick={() => this.add(this.state.category)}>Add</button>
+        </React.Fragment>
     )
   }
 }
 
-export default UsersPage
+export default TrainingCategoriesPage

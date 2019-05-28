@@ -20,6 +20,13 @@ class TrainingCategoryPage extends Component {
       })
   }
 
+  remove(id) {
+    ServiceTrainingCategories.removeTrainingCategory(id)
+      .then(() => {
+        this.props.history.push('/trainingCategories')
+      })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -28,6 +35,8 @@ class TrainingCategoryPage extends Component {
         { this.state.category.id ? (
           <div>
             <p>{this.state.category.name}</p>
+
+            <button onClick={() => this.remove(this.state.category.id)}>Remove</button>
           </div>
         ) : (
           <div>No training category</div>
