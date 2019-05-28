@@ -5,6 +5,10 @@ import App from './containers/App/index'
 import { history } from './helpers/history'
 import * as serviceWorker from './serviceWorker'
 
+import "./assets/vendor/nucleo/css/nucleo.css"
+import "./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+import "./assets/scss/argon-dashboard-react.scss"
+
 const MOUNT_NODE = document.getElementById('root')
 ReactDOM.render(
   <Router history={history}>
