@@ -10,6 +10,8 @@ import TrainingsPage from '../Trainings/index'
 import TrainingPage from '../Training/index'
 import TrainingCategoriesPage from '../TrainingCategories/index'
 import TrainingCategoryPage from '../TrainingCategory/index'
+import ExerciseCategoriesPage from '../ExerciseCategories/index'
+import ExerciseCategoryPage from '../ExerciseCategory/index'
 
 export default () => (
   <Switch>
@@ -47,6 +49,16 @@ export default () => (
       exact
       path="/trainingCategories/:id"
       component={TrainingCategoryPage}
+    />
+    <Route
+      exact
+      path="/exerciseCategories"
+      component={ExerciseCategoriesPage}
+    />
+    <Route
+      exact
+      path="/exerciseCategories/:id"
+      component={ExerciseCategoryPage}
     />
   </Switch>
 )

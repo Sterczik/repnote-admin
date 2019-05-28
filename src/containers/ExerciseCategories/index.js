@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { ServiceTrainingCategories } from '../../services/trainingCategories/trainingCategories'
+import { ServiceExerciseCategories } from '../../services/exerciseCategories/exerciseCategories'
 
-class TrainingCategoriesPage extends Component {
+class ExerciseCategoriesPage extends Component {
   constructor(props) {
     super(props)
     
@@ -15,7 +15,7 @@ class TrainingCategoriesPage extends Component {
   }
 
   componentDidMount() {
-    ServiceTrainingCategories.getTrainingCategories()
+    ServiceExerciseCategories.getExerciseCategories()
       .then(data => {
         this.setState({
           categories: data.data
@@ -29,7 +29,7 @@ class TrainingCategoriesPage extends Component {
   }
 
   add(category) {
-    ServiceTrainingCategories.addTrainingCategory({ name: category })
+    ServiceExerciseCategories.addExerciseCategory({ name: category })
       .then(data => {
         this.setState(prevState => ({
           categories: [...prevState.categories, data.data],
@@ -41,15 +41,15 @@ class TrainingCategoriesPage extends Component {
   render() {
     return (
       <React.Fragment>
-        <div>TrainingCategoriesPage</div>
+        <div>ExerciseCategoriesPage</div>
         
         { this.state.categories.length === 0 ? (
-          <div>No Training Categories</div>
+          <div>No Exercise Categories</div>
         ) : (
           this.state.categories.map((category, index) => (
             <div key={index}>
               <p>{category.name}</p>
-              <Link to={'/trainingCategories/' + category.id}>Go</Link>
+              <Link to={'/exerciseCategories/' + category.id}>Go</Link>
               <hr />
             </div>
           ))
@@ -67,4 +67,4 @@ class TrainingCategoriesPage extends Component {
   }
 }
 
-export default TrainingCategoriesPage
+export default ExerciseCategoriesPage
