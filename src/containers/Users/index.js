@@ -32,7 +32,7 @@ class UsersPage extends Component {
             <div key={index}>
               <p>{user.name}</p>
               <p>{user.email}</p>
-              <Link to={'/users/' + user.id}>Go</Link>
+              <Link to={'/admin/users/' + user.id}>Go</Link>
               <hr />
             </div>
           ))

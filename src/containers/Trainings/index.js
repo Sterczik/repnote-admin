@@ -32,7 +32,7 @@ class TrainingsPage extends Component {
             <div key={index}>
               <p>{training.name}</p>
               <p>{training.user.name}</p>
-              <Link to={'/trainings/' + training.id}>Go</Link>
+              <Link to={'/admin/trainings/' + training.id}>Go</Link>
               <hr />
             </div>
           ))

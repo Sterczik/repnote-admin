@@ -37,7 +37,7 @@ class TrainingPage extends Component {
           <div>No training</div>
         ) }
 
-        <Link to="/trainings">Back</Link>
+        <Link to="/admin/trainings">Back</Link>
       </React.Fragment>
     )
   }

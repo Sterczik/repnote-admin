@@ -11,7 +11,7 @@ class ExerciseCategoriesPage extends Component {
       category: ''
     }
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -49,7 +49,7 @@ class ExerciseCategoriesPage extends Component {
           this.state.categories.map((category, index) => (
             <div key={index}>
               <p>{category.name}</p>
-              <Link to={'/exerciseCategories/' + category.id}>Go</Link>
+              <Link to={'/admin/exerciseCategories/' + category.id}>Go</Link>
               <hr />
             </div>
           ))

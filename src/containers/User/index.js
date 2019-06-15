@@ -38,7 +38,7 @@ class UserPage extends Component {
           <div>No user</div>
         ) }
         
-        <Link to="/users">Back</Link>
+        <Link to="/admin/users">Back</Link>
       </React.Fragment>
     )
   }

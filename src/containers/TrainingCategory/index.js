@@ -42,7 +42,7 @@ class TrainingCategoryPage extends Component {
           <div>No training category</div>
         ) }
         
-        <Link to="/trainingCategories">Back</Link>
+        <Link to="/admin/trainingCategories">Back</Link>
       </React.Fragment>
     )
   }
