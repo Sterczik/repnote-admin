@@ -49,13 +49,11 @@ class Sidebar extends React.Component {
       collapseOpen: !this.state.collapseOpen
     })
   }
-  // closes the collapse
   closeCollapse = () => {
     this.setState({
       collapseOpen: false
     })
   }
-  // creates the links that appear in the left menu / Sidebar
   createLinks = routes => {
     return routes.map((prop, key) => {
       return (
@@ -94,7 +92,6 @@ class Sidebar extends React.Component {
         id="sidenav-main"
       >
         <Container fluid>
-          {/* Toggler */}
           <button
             className="navbar-toggler"
             type="button"
@@ -102,7 +99,6 @@ class Sidebar extends React.Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          {/* Brand */}
           {logo ? (
             <NavbarBrand className="pt-0" {...navbarBrandProps}>
               <img
@@ -112,7 +108,6 @@ class Sidebar extends React.Component {
               />
             </NavbarBrand>
           ) : null}
-          {/* User */}
           <Nav className="align-items-center d-md-none">
             <UncontrolledDropdown nav>
               <DropdownToggle nav className="nav-link-icon">
@@ -168,9 +163,7 @@ class Sidebar extends React.Component {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          {/* Collapse */}
           <Collapse navbar isOpen={this.state.collapseOpen}>
-            {/* Collapse header */}
             <div className="navbar-collapse-header d-md-none">
               <Row>
                 {logo ? (
@@ -198,7 +191,6 @@ class Sidebar extends React.Component {
                 </Col>
               </Row>
             </div>
-            {/* Form */}
             <Form className="mt-4 mb-3 d-md-none">
               <InputGroup className="input-group-rounded input-group-merge">
                 <Input
@@ -214,7 +206,6 @@ class Sidebar extends React.Component {
                 </InputGroupAddon>
               </InputGroup>
             </Form>
-            {/* Navigation */}
             <Nav navbar>{this.createLinks(routes)}</Nav>
           </Collapse>
         </Container>

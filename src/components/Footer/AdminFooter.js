@@ -16,11 +16,10 @@ class Footer extends React.Component {
             <Nav className="nav-footer justify-content-center justify-content-xl-end">
               <NavItem>
                 <NavLink
-                  href="https://www.creative-tim.com?ref=adr-admin-footer"
-                  rel="noopener noreferrer"
+                  href="https://www.creative-tim.com"
                   target="_blank"
                 >
-                Theme created by Creative Tim
+                  Theme created by Creative Tim
                 </NavLink>
               </NavItem>
             </Nav>
