@@ -29,7 +29,7 @@ class ExerciseCategoryPage extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div>ExerciseCategoryPage</div>
 
         { this.state.category.id ? (
@@ -42,8 +42,8 @@ class ExerciseCategoryPage extends Component {
           <div>No exercise category</div>
         ) }
         
-        <Link to="/exerciseCategories">Back</Link>
-      </React.Fragment>
+        <Link to="/admin/exerciseCategories">Back</Link>
+      </>
     )
   }
 }

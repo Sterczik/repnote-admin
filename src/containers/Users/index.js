@@ -22,7 +22,7 @@ class UsersPage extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div>UsersPage</div>
         
         { this.state.users.length === 0 ? (
@@ -32,12 +32,12 @@ class UsersPage extends Component {
             <div key={index}>
               <p>{user.name}</p>
               <p>{user.email}</p>
-              <Link to={'/users/' + user.id}>Go</Link>
+              <Link to={'/admin/users/' + user.id}>Go</Link>
               <hr />
             </div>
           ))
         )}
-      </React.Fragment>
+      </>
     )
   }
 }

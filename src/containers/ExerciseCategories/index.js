@@ -11,7 +11,7 @@ class ExerciseCategoriesPage extends Component {
       category: ''
     }
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -40,7 +40,7 @@ class ExerciseCategoriesPage extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div>ExerciseCategoriesPage</div>
         
         { this.state.categories.length === 0 ? (
@@ -49,7 +49,7 @@ class ExerciseCategoriesPage extends Component {
           this.state.categories.map((category, index) => (
             <div key={index}>
               <p>{category.name}</p>
-              <Link to={'/exerciseCategories/' + category.id}>Go</Link>
+              <Link to={'/admin/exerciseCategories/' + category.id}>Go</Link>
               <hr />
             </div>
           ))
@@ -62,7 +62,7 @@ class ExerciseCategoriesPage extends Component {
           onChange={this.handleChange}
         />
         <button onClick={() => this.add(this.state.category)}>Add</button>
-      </React.Fragment>
+      </>
     )
   }
 }

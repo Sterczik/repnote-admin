@@ -1,15 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router } from 'react-router-dom'
-import App from './containers/App/index'
-import { history } from './helpers/history'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker'
+
+import './assets/vendor/nucleo/css/nucleo.css'
+import './assets/vendor/@fortawesome/fontawesome-free/css/all.min.css'
+import './assets/scss/argon-dashboard-react.scss'
+
+import AdminLayout from './layouts/Admin'
+import AuthLayout from './layouts/Auth'
 
 const MOUNT_NODE = document.getElementById('root')
 ReactDOM.render(
-  <Router history={history}>
-    <App />
-  </Router>,
+  <BrowserRouter>
+    <Switch>
+      <Route path="/admin" render={props => <AdminLayout {...props} />} />
+      <Route path="/auth" render={props => <AuthLayout {...props} />} />
+      <Redirect from="/" to="/admin/dashboard" />
+    </Switch>
+  </BrowserRouter>,
   MOUNT_NODE,
 )
 
