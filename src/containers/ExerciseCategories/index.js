@@ -40,7 +40,7 @@ class ExerciseCategoriesPage extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div>ExerciseCategoriesPage</div>
         
         { this.state.categories.length === 0 ? (
@@ -62,7 +62,7 @@ class ExerciseCategoriesPage extends Component {
           onChange={this.handleChange}
         />
         <button onClick={() => this.add(this.state.category)}>Add</button>
-      </React.Fragment>
+      </>
     )
   }
 }

@@ -29,7 +29,7 @@ class TrainingCategoryPage extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div>TrainingCategoryPage</div>
 
         { this.state.category.id ? (
@@ -43,7 +43,7 @@ class TrainingCategoryPage extends Component {
         ) }
         
         <Link to="/admin/trainingCategories">Back</Link>
-      </React.Fragment>
+      </>
     )
   }
 }

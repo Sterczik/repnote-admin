@@ -22,7 +22,7 @@ class TrainingsPage extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div>TrainingsPage</div>
         
         { this.state.trainings.length === 0 ? (
@@ -37,7 +37,7 @@ class TrainingsPage extends Component {
             </div>
           ))
         )}
-      </React.Fragment>
+      </>
     )
   }
 }

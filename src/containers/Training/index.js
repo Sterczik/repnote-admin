@@ -22,7 +22,7 @@ class TrainingPage extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div>TrainingPage</div>
         
         { this.state.training.id ? (
@@ -38,7 +38,7 @@ class TrainingPage extends Component {
         ) }
 
         <Link to="/admin/trainings">Back</Link>
-      </React.Fragment>
+      </>
     )
   }
 }

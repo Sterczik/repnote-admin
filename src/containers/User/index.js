@@ -22,7 +22,7 @@ class UserPage extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div>UserPage</div>
 
         { this.state.user.id ? (
@@ -39,7 +39,7 @@ class UserPage extends Component {
         ) }
         
         <Link to="/admin/users">Back</Link>
-      </React.Fragment>
+      </>
     )
   }
 }

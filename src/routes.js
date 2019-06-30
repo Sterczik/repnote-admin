@@ -16,28 +16,28 @@ const routes = [
   {
     path: "/users",
     name: "Users",
-    icon: "ni ni-tv-2 text-primary",
+    icon: "ni ni-single-02 text-yellow",
     component: UsersPage,
     layout: "/admin"
   },
   {
     path: "/trainings",
     name: "Trainings",
-    icon: "ni ni-tv-2 text-primary",
+    icon: "ni ni-user-run text-info",
     component: TrainingsPage,
     layout: "/admin"
   },
   {
     path: "/trainingCategories",
     name: "Training Categories",
-    icon: "ni ni-tv-2 text-primary",
+    icon: "ni ni-bullet-list-67 text-red",
     component: TrainingCategoriesPage,
     layout: "/admin"
   },
   {
     path: "/exerciseCategories",
     name: "Exercise Categories",
-    icon: "ni ni-tv-2 text-primary",
+    icon: "ni ni-bullet-list-67 text-green",
     component: ExerciseCategoriesPage,
     layout: "/admin"
   },
