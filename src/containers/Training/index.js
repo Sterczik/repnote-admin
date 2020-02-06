@@ -20,6 +20,13 @@ class TrainingPage extends Component {
       })
   }
 
+  remove(id) {
+    ServiceTrainings.removeTraining(id)
+      .then(() => {
+        this.props.history.push('/trainings')
+      })
+  }
+
   render() {
     return (
       <>
@@ -32,6 +39,8 @@ class TrainingPage extends Component {
             <p>{this.state.training.name}</p>
             <p>{this.state.training.user.name}</p>
             <p>{this.state.training.private}</p>
+
+            <button onClick={() => this.remove(this.state.training.id)}>Remove</button>
           </div>
         ) : (
           <div>No training</div>

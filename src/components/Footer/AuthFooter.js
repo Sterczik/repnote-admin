@@ -31,26 +31,10 @@ class Login extends React.Component {
                 <Nav className="nav-footer justify-content-center justify-content-xl-end">
                   <NavItem>
                     <NavLink
-                      href="!#"
+                      href="https://github.com/Sterczik"
                       target="_blank"
                     >
                       Github
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      href="!#"
-                      target="_blank"
-                    >
-                      About
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      href="!#"
-                      target="_blank"
-                    >
-                      Blog
                     </NavLink>
                   </NavItem>
                 </Nav>

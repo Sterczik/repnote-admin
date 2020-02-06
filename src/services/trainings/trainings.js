@@ -9,7 +9,12 @@ function getTraining(id) {
     return axios.get(`${baseUrl}/api/admin/trainings/${id}`)
 }
 
+function removeTraining(id) {
+    return axios.delete(`${baseUrl}/api/admin/trainings/${id}`)
+}
+
 export const ServiceTrainings = {
     getTrainings,
-    getTraining
+    getTraining,
+    removeTraining,
 }

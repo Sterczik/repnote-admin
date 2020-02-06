@@ -9,7 +9,12 @@ function getUser(id) {
     return axios.get(`${baseUrl}/api/admin/users/${id}`)
 }
 
+function removeUser(id) {
+    return axios.delete(`${baseUrl}/api/admin/users/${id}`)
+}
+
 export const ServiceUsers = {
     getUsers,
-    getUser
+    getUser,
+    removeUser,
 }

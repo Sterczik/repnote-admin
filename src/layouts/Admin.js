@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Container } from 'reactstrap'
 import AdminNavbar from '../components/Navbars/AdminNavbar'
-import Header from '../components/Header/Header'
 import AdminFooter from '../components/Footer/AdminFooter'
 import Sidebar from '../components/Sidebar/Sidebar'
 
@@ -63,7 +62,6 @@ class Admin extends React.Component {
             {...this.props}
             brandText={this.getBrandText(this.props.location.pathname)}
           />
-          <Header />
           <Switch>
             {this.getRoutes(routes)}
             <Route

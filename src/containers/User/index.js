@@ -20,6 +20,13 @@ class UserPage extends Component {
       })
   }
 
+  remove(id) {
+    ServiceUsers.removeUser(id)
+      .then(() => {
+        this.props.history.push('/users')
+      })
+  }
+
   render() {
     return (
       <>
@@ -27,12 +34,14 @@ class UserPage extends Component {
 
         { this.state.user.id ? (
           <div>
-            <p>{this.state.user.id}</p>
-            <p>{this.state.user.name}</p>
-            <p>{this.state.user.username}</p>
-            <p>{this.state.user.email}</p>
-            <p>{this.state.user.avatar}</p>
-            <p>{this.state.user.provider}</p>
+            <p>ID: {this.state.user.id}</p>
+            <p>Name: {this.state.user.name}</p>
+            <p>Username: {this.state.user.username}</p>
+            <p>Email: {this.state.user.email}</p>
+            <p>Avatar: {this.state.user.avatar}</p>
+            <p>Provider: {this.state.user.provider}</p>
+
+            <button onClick={() => this.remove(this.state.user.id)}>Remove</button>
           </div>
         ) : (
           <div>No user</div>
