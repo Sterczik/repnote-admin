@@ -10,6 +10,7 @@ import UserPage from '../containers/User/index'
 import TrainingPage from '../containers/Training/index'
 import TrainingCategoryPage from '../containers/TrainingCategory/index'
 import ExerciseCategoryPage from '../containers/ExerciseCategory/index'
+import ContactMessagePage from '../containers/ContactMessage/index'
 
 class Admin extends React.Component {
   componentDidUpdate(e) {
@@ -83,6 +84,11 @@ class Admin extends React.Component {
               exact
               path="/admin/exerciseCategories/:id"
               component={ExerciseCategoryPage}
+            />
+            <Route
+              exact
+              path="/admin/contactMessages/:id"
+              component={ContactMessagePage}
             />
           </Switch>
           <Container fluid>

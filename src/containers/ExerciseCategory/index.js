@@ -23,7 +23,7 @@ class ExerciseCategoryPage extends Component {
   remove(id) {
     ServiceExerciseCategories.removeExerciseCategory(id)
       .then(() => {
-        this.props.history.push('/exerciseCategories')
+        this.props.history.push('/admin/exerciseCategories')
       })
   }
 

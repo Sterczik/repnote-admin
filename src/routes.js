@@ -3,6 +3,7 @@ import UsersPage from './containers/Users/index'
 import TrainingsPage from './containers/Trainings/index'
 import TrainingCategoriesPage from './containers/TrainingCategories/index'
 import ExerciseCategoriesPage from './containers/ExerciseCategories/index'
+import ContactMessagesPage from './containers/ContactMessages/index'
 import LoginPage from './containers/Login/index'
 
 const routes = [
@@ -39,6 +40,13 @@ const routes = [
     name: "Exercise Categories",
     icon: "ni ni-bullet-list-67 text-green",
     component: ExerciseCategoriesPage,
+    layout: "/admin"
+  },
+  {
+    path: "/contactMessages",
+    name: "Contact Messages",
+    icon: "ni ni-collection text-info",
+    component: ContactMessagesPage,
     layout: "/admin"
   },
   {

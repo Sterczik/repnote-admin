@@ -23,7 +23,7 @@ class TrainingCategoryPage extends Component {
   remove(id) {
     ServiceTrainingCategories.removeTrainingCategory(id)
       .then(() => {
-        this.props.history.push('/trainingCategories')
+        this.props.history.push('/admin/trainingCategories')
       })
   }
 

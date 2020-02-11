@@ -23,7 +23,7 @@ class UserPage extends Component {
   remove(id) {
     ServiceUsers.removeUser(id)
       .then(() => {
-        this.props.history.push('/users')
+        this.props.history.push('/admin/users')
       })
   }
 
