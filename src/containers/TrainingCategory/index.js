@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Alert } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { ServiceTrainingCategories } from '../../services/trainingCategories/trainingCategories'
 
@@ -7,7 +8,8 @@ class TrainingCategoryPage extends Component {
     super(props)
     
     this.state = {
-      category: {}
+      category: {},
+      error: {}
     }
   }
 
@@ -18,6 +20,11 @@ class TrainingCategoryPage extends Component {
           category: data.data
         })
       })
+      .catch((error) => {
+        this.setState({
+          error: error.response.data
+        })
+      })
   }
 
   remove(id) {
@@ -25,12 +32,26 @@ class TrainingCategoryPage extends Component {
       .then(() => {
         this.props.history.push('/admin/trainingCategories')
       })
+      .catch((error) => {
+        this.setState({
+          error: error.response.data
+        })
+      })
   }
 
   render() {
     return (
       <>
-        <div>TrainingCategoryPage</div>
+        <div>TrainingCategory Page</div>
+
+        { this.state.error && this.state.error.status === 'error' ? (
+          <Alert color="danger">
+            <span><strong>Code: </strong>{ this.state.error.err.code } | </span>
+            <span><strong>Detail: </strong>{ this.state.error.err.detail } | </span>
+            <span><strong>Table: </strong>{ this.state.error.err.table } | </span>
+            <span><strong>Constraint: </strong>{ this.state.error.err.constraint } | </span>
+          </Alert>
+        ) : null }
 
         { this.state.category.id ? (
           <div>
