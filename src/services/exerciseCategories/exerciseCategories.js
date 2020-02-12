@@ -13,6 +13,10 @@ function addExerciseCategory(data) {
   return axios.post(`${baseUrl}/api/admin/exerciseCategories`, data)
 }
 
+function editExerciseCategory(id, data) {
+  return axios.put(`${baseUrl}/api/admin/exerciseCategories/${id}`, data)
+}
+
 function removeExerciseCategory(id) {
   return axios.delete(`${baseUrl}/api/admin/exerciseCategories/${id}`)
 }
@@ -21,5 +25,6 @@ export const ServiceExerciseCategories = {
   getExerciseCategories,
   getExerciseCategory,
   addExerciseCategory,
+  editExerciseCategory,
   removeExerciseCategory
 }

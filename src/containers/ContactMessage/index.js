@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Alert } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { ServiceContactMessages } from '../../services/contactMessages/contactMessages'
+import CustomAlert from '../../components/Alert/CustomAlert'
 
 class ContactMessagePage extends Component {
   constructor(props) {
@@ -44,14 +44,9 @@ class ContactMessagePage extends Component {
       <>
         <div>ContactMessage Page</div>
 
-        { this.state.error && this.state.error.status === 'error' ? (
-          <Alert color="danger">
-            <span><strong>Code: </strong>{ this.state.error.err.code } | </span>
-            <span><strong>Detail: </strong>{ this.state.error.err.detail } | </span>
-            <span><strong>Table: </strong>{ this.state.error.err.table } | </span>
-            <span><strong>Constraint: </strong>{ this.state.error.err.constraint } | </span>
-          </Alert>
-        ) : null }
+        <CustomAlert
+          error={this.state.error}
+        />
 
         { this.state.message.id ? (
           <div>

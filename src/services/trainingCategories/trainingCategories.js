@@ -13,6 +13,10 @@ function addTrainingCategory(data) {
   return axios.post(`${baseUrl}/api/admin/trainingCategories`, data)
 }
 
+function editTrainingCategory(id, data) {
+  return axios.put(`${baseUrl}/api/admin/trainingCategories/${id}`, data)
+}
+
 function removeTrainingCategory(id) {
   return axios.delete(`${baseUrl}/api/admin/trainingCategories/${id}`)
 }
@@ -21,5 +25,6 @@ export const ServiceTrainingCategories = {
   getTrainingCategories,
   getTrainingCategory,
   addTrainingCategory,
+  editTrainingCategory,
   removeTrainingCategory
 }
