@@ -1,12 +1,11 @@
-import axios from 'axios'
-import { baseUrl } from '../../helpers/baseUrl'
+import Api from '../../helpers/api'
 
 function getTokens() {
-    return axios.get(`${baseUrl}/api/admin/tokens`)
+    return Api(true).get('/tokens')
 }
 
 function removeToken(id) {
-    return axios.delete(`${baseUrl}/api/admin/tokens/${id}`)
+    return Api(true).delete(`/tokens/${id}`)
 }
 
 export const ServiceTokens = {

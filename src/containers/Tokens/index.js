@@ -53,9 +53,15 @@ class TokensPage extends Component {
         ) : (
           this.state.tokens.map((token, index) => (
             <div key={index}>
-              <p>{token.token}</p>
-              <p>{token.user_id}</p>
-              <p>{token.id}</p>
+              <p>ID: {token.id}</p>
+              <p>Token: {token.token}</p>
+              <p>{token.user_id ? `User: ${token.user_id}` : `Administrator: ${token.admin_id}`}</p>
+              { token.user ? (
+                <>
+                  <p>Username: { token.user.name }</p>
+                  <p>Email: { token.user.email }</p>
+                </>
+              ) : null }
               <button onClick={() => this.remove(token.id)}>Remove</button>
               <hr />
             </div>

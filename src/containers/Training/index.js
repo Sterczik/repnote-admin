@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import {
+  Button
+} from 'reactstrap'
 import { ServiceTrainings } from '../../services/trainings/trainings'
 import CustomAlert from '../../components/Alert/CustomAlert'
 
@@ -41,29 +44,40 @@ class TrainingPage extends Component {
 
   render() {
     return (
-      <>
-        <div>Training Page</div>
-
+      <div className="px-4 py-3">
         <CustomAlert
           error={this.state.error}
         />
-        
         { this.state.training.id ? (
-          <div>
-            <p>{this.state.training.id}</p>
-            <p>{this.state.training.category.name}</p>
-            <p>{this.state.training.name}</p>
-            <p>{this.state.training.user.name}</p>
-            <p>{this.state.training.private}</p>
-
-            <button onClick={() => this.remove(this.state.training.id)}>Remove</button>
-          </div>
+          <>
+            <h4 className="display-4 mb-4">{ this.state.training.name }</h4>
+            <div className="mb-3">
+              <p className="mb-0"><b>ID: </b>{this.state.training.id}</p>
+              <p className="mb-0"><b>Name: </b>{this.state.training.name}</p>
+              <p className="mb-0"><b>Category name: </b>{this.state.training.category.name}</p>
+              <p className="mb-0"><b>Username: </b>{this.state.training.user.name}</p>
+              <p className="mb-0"><b>Private: </b>{String(this.state.training.private)}</p>
+            </div>
+            <Button
+              color="primary"
+              onClick={() => this.remove(this.state.training.id)}
+              size="sm"
+            >
+              Remove
+            </Button>
+          </>
         ) : (
-          <div>No training</div>
+          <h4 className="display-4 mb-4">Loading</h4>
         ) }
-
-        <Link to="/admin/trainings">Back</Link>
-      </>
+        <Button
+          color="info"
+          to="/admin/trainings"
+          tag={Link}
+          size="sm"
+        >
+          Back
+        </Button>
+      </div>
     )
   }
 }

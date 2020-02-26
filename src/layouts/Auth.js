@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import { Container, Row, Col } from 'reactstrap'
 import AuthNavbar from '../components/Navbars/AuthNavbar'
 import AuthFooter from '../components/Footer/AuthFooter'
@@ -31,6 +32,12 @@ class Auth extends React.Component {
   render() {
     return (
       <>
+        <Helmet
+          titleTemplate="Login RepNote Panel"
+          defaultTitle="Login RepNote Panel"
+        >
+          <meta name="description" content="Login RepNote Panel" />
+        </Helmet>
         <div className="main-content">
           <AuthNavbar />
           <div className="header bg-gradient-info py-7 py-lg-8">

@@ -1,24 +1,23 @@
-import axios from 'axios'
-import { baseUrl } from '../../helpers/baseUrl'
+import Api from '../../helpers/api'
 
 function getTrainingCategories() {
-  return axios.get(`${baseUrl}/api/admin/trainingCategories`)
+  return Api(true).get('/trainingCategories')
 }
 
 function getTrainingCategory(id) {
-  return axios.get(`${baseUrl}/api/admin/trainingCategories/${id}`)
+  return Api(true).get(`/trainingCategories/${id}`)
 }
 
 function addTrainingCategory(data) {
-  return axios.post(`${baseUrl}/api/admin/trainingCategories`, data)
+  return Api(true).post('/trainingCategories', data)
 }
 
 function editTrainingCategory(id, data) {
-  return axios.put(`${baseUrl}/api/admin/trainingCategories/${id}`, data)
+  return Api(true).put(`/trainingCategories/${id}`, data)
 }
 
 function removeTrainingCategory(id) {
-  return axios.delete(`${baseUrl}/api/admin/trainingCategories/${id}`)
+  return Api(true).delete(`/trainingCategories/${id}`)
 }
 
 export const ServiceTrainingCategories = {

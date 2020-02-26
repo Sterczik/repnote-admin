@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import {
+  Button
+} from 'reactstrap'
 import { ServiceUsers } from '../../services/users/users'
 import CustomAlert from '../../components/Alert/CustomAlert'
 
@@ -41,30 +44,41 @@ class UserPage extends Component {
 
   render() {
     return (
-      <>
-        <div>User Page</div>
-
+      <div className="px-4 py-3">
         <CustomAlert
           error={this.state.error}
         />
-
         { this.state.user.id ? (
-          <div>
-            <p>ID: {this.state.user.id}</p>
-            <p>Name: {this.state.user.name}</p>
-            <p>Username: {this.state.user.username}</p>
-            <p>Email: {this.state.user.email}</p>
-            <p>Avatar: {this.state.user.avatar}</p>
-            <p>Provider: {this.state.user.provider}</p>
-
-            <button onClick={() => this.remove(this.state.user.id)}>Remove</button>
-          </div>
+          <>
+            <h4 className="display-4 mb-4">{ this.state.user.name }</h4>
+            <div className="mb-3">
+              <p className="mb-0"><b>ID: </b>{this.state.user.id}</p>
+              <p className="mb-0"><b>Name: </b>{this.state.user.name}</p>
+              <p className="mb-0"><b>Username: </b>{this.state.user.username}</p>
+              <p className="mb-0"><b>Email: </b>{this.state.user.email}</p>
+              <p className="mb-0"><b>Avatar: </b>{this.state.user.avatar}</p>
+              <p className="mb-0"><b>Provider: </b>{this.state.user.provider}</p>
+            </div>
+            <Button
+              color="primary"
+              onClick={() => this.remove(this.state.user.id)}
+              size="sm"
+            >
+              Remove
+            </Button>
+          </>
         ) : (
-          <div>No user</div>
+          <h4 className="display-4 mb-4">Loading</h4>
         ) }
-        
-        <Link to="/admin/users">Back</Link>
-      </>
+        <Button
+          color="info"
+          to="/admin/users"
+          tag={Link}
+          size="sm"
+        >
+          Back
+        </Button>
+      </div>
     )
   }
 }

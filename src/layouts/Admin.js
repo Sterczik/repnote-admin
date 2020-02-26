@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { Container } from 'reactstrap'
+import { Helmet } from 'react-helmet'
 import AdminNavbar from '../components/Navbars/AdminNavbar'
 import AdminFooter from '../components/Footer/AdminFooter'
 import Sidebar from '../components/Sidebar/Sidebar'
@@ -49,6 +49,12 @@ class Admin extends React.Component {
   render() {
     return (
       <>
+        <Helmet
+          titleTemplate="RepNote Admin Panel"
+          defaultTitle="RepNote Admin Panel"
+        >
+          <meta name="description" content="RepNote Admin Panel" />
+        </Helmet>
         <Sidebar
           {...this.props}
           routes={routes}
@@ -91,9 +97,7 @@ class Admin extends React.Component {
               component={ContactMessagePage}
             />
           </Switch>
-          <Container fluid>
-            <AdminFooter />
-          </Container>
+          <AdminFooter />
         </div>
       </>
     )

@@ -1,12 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {
-  UncontrolledCollapse,
   NavbarBrand,
   Navbar,
-  Container,
-  Row,
-  Col
+  Container
 } from 'reactstrap'
 
 class AdminNavbar extends React.Component {
@@ -21,32 +18,6 @@ class AdminNavbar extends React.Component {
             <NavbarBrand to="/" tag={Link}>
               <img alt="..." src={require("../../assets/img/brand/repnote-white.png")} />
             </NavbarBrand>
-            <button className="navbar-toggler" id="navbar-collapse-main">
-              <span className="navbar-toggler-icon" />
-            </button>
-            <UncontrolledCollapse navbar toggler="#navbar-collapse-main">
-              <div className="navbar-collapse-header d-md-none">
-                <Row>
-                  <Col className="collapse-brand" xs="6">
-                    <Link to="/">
-                      <img
-                        alt="..."
-                        src={require("../../assets/img/brand/repnote.png")}
-                      />
-                    </Link>
-                  </Col>
-                  <Col className="collapse-close" xs="6">
-                    <button
-                      className="navbar-toggler"
-                      id="navbar-collapse-main"
-                    >
-                      <span />
-                      <span />
-                    </button>
-                  </Col>
-                </Row>
-              </div>
-            </UncontrolledCollapse>
           </Container>
         </Navbar>
       </>

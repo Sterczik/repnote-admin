@@ -1,4 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { withFormik, Form as FormikForm, ErrorMessage } from 'formik'
+import validationSchema from './validationSchema'
+
 import {
   Button,
   Card,
@@ -12,49 +16,89 @@ import {
   Col
 } from 'reactstrap'
 
-class Login extends React.Component {
-  render() {
-    return (
-      <>
-        <Col lg="5" md="7">
-          <Card className="bg-secondary shadow border-0">
-            <CardBody className="px-lg-5 py-lg-5">
-              <div className="text-center text-muted mb-4">
-                <small>Sign in with credentials</small>
-              </div>
-              <Form role="form">
-                <FormGroup className="mb-3">
-                  <InputGroup className="input-group-alternative">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-email-83" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input placeholder="Email" type="email" />
-                  </InputGroup>
-                </FormGroup>
-                <FormGroup>
-                  <InputGroup className="input-group-alternative">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-lock-circle-open" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input placeholder="Password" type="password" />
-                  </InputGroup>
-                </FormGroup>
-                <div className="text-center">
-                  <Button className="my-4" color="primary" type="button">
-                    Sign in
-                  </Button>
-                </div>
-              </Form>
-            </CardBody>
-          </Card>
-        </Col>
-      </>
-    )
-  }
-}
+import { authActions } from '../../app/auth/actions'
 
-export default Login
+const LoginForm = ({
+  values,
+  errors,
+  touched,
+  handleChange
+}) => (
+  <Col lg="5" md="7">
+    <Card className="bg-secondary shadow border-0">
+      <CardBody className="px-lg-5 py-lg-5">
+        <div className="text-center text-muted mb-4">
+          <small>Sign in with credentials</small>
+        </div>
+        <FormikForm>
+          <Form role="form">
+            <FormGroup className="mb-3">
+              <InputGroup className="input-group-alternative">
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText>
+                    <i className="ni ni-email-83" />
+                  </InputGroupText>
+                </InputGroupAddon>
+                <Input
+                  placeholder="Email"
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={values.email}
+                  onChange={handleChange}
+                />
+              </InputGroup>
+              <div className="formik-invalid-feedback">
+                <ErrorMessage name="email" />
+              </div>
+            </FormGroup>
+            <FormGroup>
+              <InputGroup className="input-group-alternative">
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText>
+                    <i className="ni ni-lock-circle-open" />
+                  </InputGroupText>
+                </InputGroupAddon>
+                <Input
+                  placeholder="Password"
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={values.password}
+                  onChange={handleChange}
+                />
+              </InputGroup>
+              <div className="formik-invalid-feedback">
+                <ErrorMessage name="password" />
+              </div>
+            </FormGroup>
+            <div className="text-center">
+              <Button className="my-4" color="primary" type="submit">
+                Sign in
+              </Button>
+            </div>
+          </Form>
+        </FormikForm>
+      </CardBody>
+    </Card>
+  </Col>
+)
+
+const LoginFormFormik = withFormik({
+  mapPropsToValues() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  validationSchema,
+  handleSubmit(values, { props }) {
+    props.login(values.email, values.password)
+  }
+})(LoginForm)
+
+const mapDispatchToProps = (dispatch) => ({
+  login: (email, password) => dispatch(authActions.login(email, password))
+})
+
+export default connect(undefined, mapDispatchToProps)(LoginFormFormik)

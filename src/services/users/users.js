@@ -1,16 +1,15 @@
-import axios from 'axios'
-import { baseUrl } from '../../helpers/baseUrl'
+import Api from '../../helpers/api'
 
 function getUsers() {
-    return axios.get(`${baseUrl}/api/admin/users`)
+    return Api(true).get('/users')
 }
 
 function getUser(id) {
-    return axios.get(`${baseUrl}/api/admin/users/${id}`)
+    return Api(true).get(`/users/${id}`)
 }
 
 function removeUser(id) {
-    return axios.delete(`${baseUrl}/api/admin/users/${id}`)
+    return Api(true).delete(`/users/${id}`)
 }
 
 export const ServiceUsers = {

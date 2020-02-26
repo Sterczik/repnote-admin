@@ -1,16 +1,15 @@
-import axios from 'axios'
-import { baseUrl } from '../../helpers/baseUrl'
+import Api from '../../helpers/api'
 
 function getTrainings() {
-    return axios.get(`${baseUrl}/api/admin/trainings`)
+    return Api(true).get('/trainings')
 }
 
 function getTraining(id) {
-    return axios.get(`${baseUrl}/api/admin/trainings/${id}`)
+    return Api(true).get(`/trainings/${id}`)
 }
 
 function removeTraining(id) {
-    return axios.delete(`${baseUrl}/api/admin/trainings/${id}`)
+    return Api(true).delete(`/trainings/${id}`)
 }
 
 export const ServiceTrainings = {
