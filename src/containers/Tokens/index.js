@@ -1,75 +1,75 @@
 import React, { Component } from 'react'
-import { ServiceTokens } from '../../services/tokens/tokens'
-import CustomAlert from '../../components/Alert/CustomAlert'
+import { connect } from 'react-redux'
+import {
+  Row,
+  Col,
+  Button
+} from 'reactstrap'
+
+import {
+  getTokens,
+  removeToken
+} from '../../app/global/actions'
 
 class TokensPage extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      tokens: [],
-      error: {}
-    }
-  }
-
   componentDidMount() {
-    ServiceTokens.getTokens()
-      .then(data => {
-        this.setState({
-          tokens: data.data
-        })
-      })
-      .catch((error) => {
-        this.setState({
-          error: error.response.data
-        })
-      })
+    this.props.getTokens()
   }
 
   remove(id) {
-    ServiceTokens.removeToken(id)
-      .then(() => {
-        this.props.history.push('/admin')
-        this.props.history.push('/admin/tokens')
-      })
-      .catch((error) => {
-        this.setState({
-          error: error.response.data
-        })
-      })
+    this.props.removeToken(id)
   }
 
   render() {
     return (
-      <>
-        <div>Tokens Page</div>
-
-        <CustomAlert
-          error={this.state.error}
-        />
-        
-        { this.state.tokens.length === 0 ? (
-          <div>No tokens</div>
+      <div className="px-4 py-3">
+        <h4 className="display-4 mb-4">RepNote Tokens</h4>
+        { this.props.tokens.length === 0 ? (
+          <p>No tokens</p>
         ) : (
-          this.state.tokens.map((token, index) => (
-            <div key={index}>
-              <p>ID: {token.id}</p>
-              <p>Token: {token.token}</p>
-              <p>{token.user_id ? `User: ${token.user_id}` : `Administrator: ${token.admin_id}`}</p>
-              { token.user ? (
-                <>
-                  <p>Username: { token.user.name }</p>
-                  <p>Email: { token.user.email }</p>
-                </>
-              ) : null }
-              <button onClick={() => this.remove(token.id)}>Remove</button>
-              <hr />
+          this.props.tokens.map((token, index) => (
+            <div key={index} className="border-bottom pb-3 mb-3">
+              <Row>
+                <Col sm="12" lg="2">
+                  <span>ID: {token.id}</span>
+                </Col>
+                <Col sm="12" lg="4">
+                  <span>Token: {token.token}</span>
+                </Col>
+                <Col sm="12" lg="4">
+                  <p>{token.user_id ? `User: ${token.user_id}` : `Administrator: ${token.admin_id}`}</p>
+                  { token.user ? (
+                    <>
+                      <p>Username: { token.user.name }</p>
+                      <p>Email: { token.user.email }</p>
+                    </>
+                  ) : null }
+                </Col>
+                <Col sm="12" lg="2">
+                  <Button
+                    onClick={() => this.remove(token.id)}
+                    color="primary"
+                    size="sm"
+                  >
+                    Remove
+                  </Button>
+                </Col>
+              </Row>
             </div>
           ))
         )}
-      </>
+      </div>
     )
   }
 }
 
-export default TokensPage
+const mapStateToProps = (state) => ({
+  tokens: state.global.tokens
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getTokens: () => dispatch(getTokens()),
+  removeToken: (id) => dispatch(removeToken(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TokensPage)

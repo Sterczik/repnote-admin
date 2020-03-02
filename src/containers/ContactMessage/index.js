@@ -1,68 +1,71 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { ServiceContactMessages } from '../../services/contactMessages/contactMessages'
+import { connect } from 'react-redux'
+import {
+  Button
+} from 'reactstrap'
+
+import {
+  getContactMessage,
+  removeContactMessage
+} from '../../app/global/actions'
 import CustomAlert from '../../components/Alert/CustomAlert'
 
 class ContactMessagePage extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      message: {},
-      error: {}
-    }
-  }
-
   componentDidMount() {
-    ServiceContactMessages.getContactMessage(this.props.match.params.id)
-      .then(data => {
-        this.setState({
-          message: data.data
-        })
-      })
-      .catch((error) => {
-        this.setState({
-          error: error.response.data
-        })
-      })
+    this.props.getContactMessage(this.props.match.params.id)
   }
 
   remove(id) {
-    ServiceContactMessages.removeContactMessage(id)
-      .then(() => {
-        this.props.history.push('/admin/contactMessages')
-      })
-      .catch((error) => {
-        this.setState({
-          error: error.response.data
-        })
-      })
+    this.props.removeContactMessage(id)
   }
 
   render() {
     return (
-      <>
-        <div>ContactMessage Page</div>
-
+      <div className="px-4 py-3">
         <CustomAlert
-          error={this.state.error}
+          error={this.props.error}
         />
-
-        { this.state.message.id ? (
-          <div>
-            From: <p>{ this.state.message.name } ({ this.state.message.email })</p>
-            <span>{ this.state.message.message }</span>
-
-            <button onClick={() => this.remove(this.state.message.id)}>Remove</button>
-          </div>
+        { this.props.contactMessage.id ? (
+          <>
+            <h4 className="display-4 mb-4">{ this.props.contactMessage.id }</h4>
+            <div className="mb-3">
+              <p className="mb-0"><b>From: </b>{this.props.contactMessage.name}</p>
+              <p className="mb-0"><b>Email: </b>{this.props.contactMessage.email}</p>
+              <p className="mb-0"><b>Message: </b>{this.props.contactMessage.message}</p>
+            </div>
+            <Button
+              color="primary"
+              onClick={() => this.remove(this.props.contactMessage.id)}
+              size="sm"
+            >
+              Remove
+            </Button>
+          </>
         ) : (
-          <div>No contact message</div>
+          <h4 className="display-4 mb-4">Loading</h4>
         ) }
-        
-        <Link to="/admin/contactMessages">Back</Link>
-      </>
+        <Button
+          color="info"
+          to="/admin/contactMessages"
+          tag={Link}
+          size="sm"
+        >
+          Back
+        </Button>
+      </div>
     )
   }
 }
 
-export default ContactMessagePage
+const mapStateToProps = (state) => ({
+  contactMessage: state.global.contactMessage,
+  error: state.global.error
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getContactMessage: (id) => dispatch(getContactMessage(id)),
+  removeContactMessage: (id) => dispatch(removeContactMessage(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactMessagePage)

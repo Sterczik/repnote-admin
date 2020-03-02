@@ -1,126 +1,75 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { ServiceTrainingCategories } from '../../services/trainingCategories/trainingCategories'
+import { connect } from 'react-redux'
+import {
+  Button
+} from 'reactstrap'
+
+import EditTrainingCategoryForm from '../../components/Forms/EditTrainingCategoryForm/EditTrainingCategoryForm'
+
+import {
+  getTrainingCategory,
+  editTrainingCategory,
+  removeTrainingCategory
+} from '../../app/global/actions'
+
 import CustomAlert from '../../components/Alert/CustomAlert'
 
 class TrainingCategoryPage extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      category: {},
-      name: '',
-      edit: false,
-      error: {}
-    }
-
-    this.handleChange = this.handleChange.bind(this)
-    this.editOn = this.editOn.bind(this)
-    this.editOff = this.editOff.bind(this)
-    this.edit = this.edit.bind(this)
-  }
-
-  handleChange(e) {
-    const { name, value } = e.target
-    this.setState({ [name]: value })
-  }
-
   componentDidMount() {
-    ServiceTrainingCategories.getTrainingCategory(this.props.match.params.id)
-      .then(data => {
-        this.setState({
-          category: data.data
-        })
-      })
-      .catch((error) => {
-        this.setState({
-          error: error.response.data
-        })
-      })
+    this.props.getTrainingCategory(this.props.match.params.id)
   }
 
   remove(id) {
-    ServiceTrainingCategories.removeTrainingCategory(id)
-      .then(() => {
-        this.props.history.push('/admin/trainingCategories')
-      })
-      .catch((error) => {
-        this.setState({
-          error: error.response.data
-        })
-      })
-  }
-
-  editOn() {
-    this.setState({
-      edit: true
-    })
-  }
-
-  editOff() {
-    this.setState({
-      edit: false,
-      name: ''
-    })
-  }
-
-  edit() {
-    ServiceTrainingCategories.editTrainingCategory(this.props.match.params.id, { name: this.state.name })
-      .then((data) => {
-        this.setState({
-          category: data.data,
-          name: '',
-          edit: false
-        })
-      })
-      .catch((error) => {
-        this.setState({
-          error: error.response.data
-        })
-      })
+    this.props.removeTrainingCategory(id)
   }
 
   render() {
     return (
-      <>
-        <div>TrainingCategory Page</div>
-
+      <div className="px-4 py-3">
         <CustomAlert
-          error={this.state.error}
+          error={this.props.error}
         />
-
-        { this.state.category.id ? (
-          <div>
-            { this.state.edit ? (
-              <input
-                type="text"
-                name="name"
-                value={this.state.name}
-                onChange={this.handleChange}
-              />
-            ) : (
-              <p>{this.state.category.name}</p>
-            ) }
-
-            { !this.state.edit ? (
-              <button onClick={this.editOn}>Edit</button>
-            ) : (
-              <>
-                <button onClick={this.editOff}>Cancel</button>
-                <button onClick={this.edit}>Save</button>
-              </>
-            ) }
-
-            <button onClick={() => this.remove(this.state.category.id)}>Remove</button>
-          </div>
+        { this.props.trainingCategory.id ? (
+          <>
+            <h4 className="display-4 mb-4">{ this.props.trainingCategory.name }</h4>
+            <EditTrainingCategoryForm
+              trainingCategory={this.props.trainingCategory}
+              editTrainingCategory={this.props.editTrainingCategory}
+            />
+            <Button
+              color="danger"
+              onClick={() => this.remove(this.props.trainingCategory.id)}
+              size="sm"
+            >
+              Remove
+            </Button>
+          </>
         ) : (
           <div>No training category</div>
         ) }
-        
-        <Link to="/admin/trainingCategories">Back</Link>
-      </>
+        <Button
+          color="info"
+          to="/admin/trainingCategories"
+          tag={Link}
+          size="sm"
+        >
+          Back
+        </Button>
+      </div>
     )
   }
 }
 
-export default TrainingCategoryPage
+const mapStateToProps = (state) => ({
+  trainingCategory: state.global.trainingCategory,
+  error: state.global.error
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getTrainingCategory: (id) => dispatch(getTrainingCategory(id)),
+  editTrainingCategory: (id, data) => dispatch(editTrainingCategory(id, data)),
+  removeTrainingCategory: (id) => dispatch(removeTrainingCategory(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingCategoryPage)

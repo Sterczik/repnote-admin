@@ -1,56 +1,30 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import {
   Row,
   Col,
   Button
 } from 'reactstrap'
-import { ServiceExerciseCategories } from '../../services/exerciseCategories/exerciseCategories'
+
+import ExerciseCategoryForm from '../../components/Forms/ExerciseCategoryForm/ExerciseCategoryForm'
+import {
+  getExerciseCategories
+} from '../../app/global/actions'
 
 class ExerciseCategoriesPage extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      categories: [],
-      category: ''
-    }
-
-    this.handleChange = this.handleChange.bind(this)
-  }
-
   componentDidMount() {
-    ServiceExerciseCategories.getExerciseCategories()
-      .then(data => {
-        this.setState({
-          categories: data.data
-        })
-      })
-  }
-
-  handleChange(e) {
-    const { name, value } = e.target
-    this.setState({ [name]: value })
-  }
-
-  add(category) {
-    ServiceExerciseCategories.addExerciseCategory({ name: category })
-      .then(data => {
-        this.setState(prevState => ({
-          categories: [...prevState.categories, data.data],
-          category: ''
-        }))
-      })
+    this.props.getExerciseCategories()
   }
 
   render() {
     return (
       <div className="px-4 py-3">
         <h4 className="display-4 mb-4">RepNote Exercise Categories</h4>
-        { this.state.categories.length === 0 ? (
+        { this.props.exerciseCategories.length === 0 ? (
           <p>No exercise categories</p>
         ) : (
-          this.state.categories.map((category, index) => (
+          this.props.exerciseCategories.map((category, index) => (
             <div key={index} className="border-bottom pb-3 mb-3">
               <Row>
                 <Col sm="12" lg="6">
@@ -70,22 +44,18 @@ class ExerciseCategoriesPage extends Component {
             </div>
           ))
         )}
-        <input
-          type="text"
-          name="category"
-          value={this.state.category}
-          onChange={this.handleChange}
-        />
-        <Button
-          color="primary"
-          onClick={() => this.add(this.state.category)}
-          size="sm"
-        >
-          Add
-        </Button>
+        <ExerciseCategoryForm />
       </div>
     )
   }
 }
 
-export default ExerciseCategoriesPage
+const mapStateToProps = (state) => ({
+  exerciseCategories: state.global.exerciseCategories
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getExerciseCategories: () => dispatch(getExerciseCategories())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExerciseCategoriesPage)

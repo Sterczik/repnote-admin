@@ -7,6 +7,7 @@ import {
 import thunk from 'redux-thunk'
 
 import authReducer from '../app/auth/reducer'
+import globalReducer from '../app/global/reducer'
 
 import { jwt } from './middlewares/jwt'
 
@@ -21,6 +22,7 @@ export default () => {
   const store = createStore(
     combineReducers({
       auth: authReducer,
+      global: globalReducer,
     }),
     composeEnhancers(applyMiddleware(jwt, thunk))
   )

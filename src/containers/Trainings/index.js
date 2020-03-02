@@ -1,38 +1,29 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import {
   Row,
   Col,
   Button
 } from 'reactstrap'
-import { ServiceTrainings } from '../../services/trainings/trainings'
+
+import {
+  getTrainings
+} from '../../app/global/actions'
 
 class TrainingsPage extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      trainings: []
-    }
-  }
-
   componentDidMount() {
-    ServiceTrainings.getTrainings()
-      .then(data => {
-        this.setState({
-          trainings: data.data
-        })
-      })
+    this.props.getTrainings()
   }
 
   render() {
     return (
       <div className="px-4 py-3">
         <h4 className="display-4 mb-4">RepNote Trainings</h4>
-        { this.state.trainings.length === 0 ? (
+        { this.props.trainings.length === 0 ? (
           <p>No trainings</p>
         ) : (
-          this.state.trainings.map((training, index) => (
+          this.props.trainings.map((training, index) => (
             <div key={index} className="border-bottom pb-3 mb-3">
               <Row>
                 <Col sm="12" lg="4">
@@ -60,4 +51,12 @@ class TrainingsPage extends Component {
   }
 }
 
-export default TrainingsPage
+const mapStateToProps = (state) => ({
+  trainings: state.global.trainings
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getTrainings: () => dispatch(getTrainings())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingsPage)

@@ -1,38 +1,29 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import {
   Row,
   Col,
   Button
 } from 'reactstrap'
-import { ServiceUsers } from '../../services/users/users'
+
+import {
+  getUsers
+} from '../../app/global/actions'
 
 class UsersPage extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      users: []
-    }
-  }
-
   componentDidMount() {
-    ServiceUsers.getUsers()
-      .then(data => {
-        this.setState({
-          users: data.data.users
-        })
-      })
+    this.props.getUsers()
   }
 
   render() {
     return (
       <div className="px-4 py-3">
         <h4 className="display-4 mb-4">RepNote Users</h4>
-        { this.state.users.length === 0 ? (
+        { this.props.users.length === 0 ? (
           <p>No users</p>
         ) : (
-          this.state.users.map((user, index) => (
+          this.props.users.map((user, index) => (
             <div key={index} className="border-bottom pb-3 mb-3">
               <Row>
                 <Col sm="12" lg="4">
@@ -60,4 +51,12 @@ class UsersPage extends Component {
   }
 }
 
-export default UsersPage
+const mapStateToProps = (state) => ({
+  users: state.global.users
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getUsers: () => dispatch(getUsers())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UsersPage)

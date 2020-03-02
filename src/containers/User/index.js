@@ -1,67 +1,45 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import {
   Button
 } from 'reactstrap'
-import { ServiceUsers } from '../../services/users/users'
+
+import {
+  getUser,
+  removeUser
+} from '../../app/global/actions'
 import CustomAlert from '../../components/Alert/CustomAlert'
 
 class UserPage extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      user: {},
-      error: {}
-    }
-  }
-
   componentDidMount() {
-    ServiceUsers.getUser(this.props.match.params.id)
-      .then(data => {
-        this.setState({
-          user: data.data
-        })
-      })
-      .catch((error) => {
-        this.setState({
-          error: error.response.data
-        })
-      })
+    this.props.getUser(this.props.match.params.id)
   }
 
   remove(id) {
-    ServiceUsers.removeUser(id)
-      .then(() => {
-        this.props.history.push('/admin/users')
-      })
-      .catch((error) => {
-        this.setState({
-          error: error.response.data
-        })
-      })
+    this.props.removeUser(id)
   }
 
   render() {
     return (
       <div className="px-4 py-3">
         <CustomAlert
-          error={this.state.error}
+          error={this.props.error}
         />
-        { this.state.user.id ? (
+        { this.props.user.id ? (
           <>
-            <h4 className="display-4 mb-4">{ this.state.user.name }</h4>
+            <h4 className="display-4 mb-4">{ this.props.user.name }</h4>
             <div className="mb-3">
-              <p className="mb-0"><b>ID: </b>{this.state.user.id}</p>
-              <p className="mb-0"><b>Name: </b>{this.state.user.name}</p>
-              <p className="mb-0"><b>Username: </b>{this.state.user.username}</p>
-              <p className="mb-0"><b>Email: </b>{this.state.user.email}</p>
-              <p className="mb-0"><b>Avatar: </b>{this.state.user.avatar}</p>
-              <p className="mb-0"><b>Provider: </b>{this.state.user.provider}</p>
+              <p className="mb-0"><b>ID: </b>{this.props.user.id}</p>
+              <p className="mb-0"><b>Name: </b>{this.props.user.name}</p>
+              <p className="mb-0"><b>Username: </b>{this.props.user.username}</p>
+              <p className="mb-0"><b>Email: </b>{this.props.user.email}</p>
+              <p className="mb-0"><b>Avatar: </b>{this.props.user.avatar}</p>
+              <p className="mb-0"><b>Provider: </b>{this.props.user.provider}</p>
             </div>
             <Button
               color="primary"
-              onClick={() => this.remove(this.state.user.id)}
+              onClick={() => this.remove(this.props.user.id)}
               size="sm"
             >
               Remove
@@ -83,4 +61,14 @@ class UserPage extends Component {
   }
 }
 
-export default UserPage
+const mapStateToProps = (state) => ({
+  user: state.global.user,
+  error: state.global.error
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getUser: (id) => dispatch(getUser(id)),
+  removeUser: (id) => dispatch(removeUser(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserPage)

@@ -1,38 +1,29 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import {
   Row,
   Col,
   Button
 } from 'reactstrap'
-import { ServiceContactMessages } from '../../services/contactMessages/contactMessages'
+
+import {
+  getContactMessages
+} from '../../app/global/actions'
 
 class ContactMessagesPage extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      messages: []
-    }
-  }
-
   componentDidMount() {
-    ServiceContactMessages.getContactMessages()
-      .then(data => {
-        this.setState({
-          messages: data.data
-        })
-      })
+    this.props.getContactMessages()
   }
 
   render() {
     return (
       <div className="px-4 py-3">
         <h4 className="display-4 mb-4">RepNote Contact Messages</h4>
-        { this.state.messages.length === 0 ? (
+        { this.props.contactMessages.length === 0 ? (
           <p>No contact messages</p>
         ) : (
-          this.state.messages.map((message, index) => (
+          this.props.contactMessages.map((message, index) => (
             <div key={index} className="border-bottom pb-3 mb-3">
               <Row>
                 <Col sm="12" lg="4">
@@ -60,4 +51,12 @@ class ContactMessagesPage extends Component {
   }
 }
 
-export default ContactMessagesPage
+const mapStateToProps = (state) => ({
+  contactMessages: state.global.contactMessages
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getContactMessages: () => dispatch(getContactMessages())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactMessagesPage)
