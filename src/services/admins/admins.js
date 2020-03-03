@@ -19,7 +19,12 @@ function logout() {
     })
 }
 
+function refreshToken(refreshToken) {
+    return Api().post('admins/refreshToken', { refreshToken })
+}
+
 export const ServiceAdmins = {
     login,
-    logout
+    logout,
+    refreshToken
 }
