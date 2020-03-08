@@ -152,6 +152,22 @@ export default (state = globalReducerDefaultState, action) => {
         ...state,
         error: action.error
       }
+    // Remove Training Category
+    case globalConstants.REMOVE_TRAINING_CATEGORY_IN_PROCESS:
+      return {
+        ...state,
+        error: {}
+      }
+    case globalConstants.REMOVE_TRAINING_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        trainingCategory: {}
+      }
+    case globalConstants.REMOVE_TRAINING_CATEGORY_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      }
     // Get Exercise Categories
     case globalConstants.GET_EXERCISE_CATEGORIES_IN_PROCESS:
       return {
@@ -197,6 +213,22 @@ export default (state = globalReducerDefaultState, action) => {
         exerciseCategory: action.exerciseCategory
       }
     case globalConstants.EDIT_EXERCISE_CATEGORY_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      }
+    // Remove Exercise Category
+    case globalConstants.REMOVE_EXERCISE_CATEGORY_IN_PROCESS:
+      return {
+        ...state,
+        error: {}
+      }
+    case globalConstants.REMOVE_EXERCISE_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        exerciseCategory: {}
+      }
+    case globalConstants.REMOVE_EXERCISE_CATEGORY_FAILURE:
       return {
         ...state,
         error: action.error

@@ -32,7 +32,7 @@ const EditTrainingCategoryForm = (props) => {
         return (
           <Form onSubmit={handleSubmit}>
             <Row>
-              <Col md="6">
+              <Col xs="8" md="6">
                 <FormGroup>
                   <InputGroup className="input-group-alternative">
                     <Input
@@ -48,7 +48,7 @@ const EditTrainingCategoryForm = (props) => {
                   </div>
                 </FormGroup>
               </Col>
-              <Col md="6">
+              <Col xs="4" md="6">
                 <Button
                   type="submit"
                   color="primary"
