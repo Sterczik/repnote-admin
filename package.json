@@ -1,6 +1,6 @@
 {
   "name": "repnote-admin",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "axios": "0.18.0",
@@ -21,10 +21,12 @@
     "yup": "0.26.6"
   },
   "scripts": {
+    "start": "react-scripts start",
     "start:dev": "PORT=7000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "yarn run build"
   },
   "eslintConfig": {
     "extends": "react-app"
