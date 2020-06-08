@@ -15,7 +15,7 @@ import {
 
 import {
   addExerciseCategory
-} from '../../../app/global/actions'
+} from 'store/global/actions'
 
 const ExerciseCategoryForm = ({
   values,

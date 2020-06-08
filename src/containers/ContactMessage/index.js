@@ -8,8 +8,8 @@ import {
 import {
   getContactMessage,
   removeContactMessage
-} from '../../app/global/actions'
-import CustomAlert from '../../components/Alert/CustomAlert'
+} from 'store/global/actions'
+import CustomAlert from 'components/Alert/CustomAlert'
 
 class ContactMessagePage extends Component {
   componentDidMount() {

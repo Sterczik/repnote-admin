@@ -16,7 +16,7 @@ import {
   Col
 } from 'reactstrap'
 
-import { authActions } from '../../app/auth/actions'
+import { authActions } from 'store/auth/actions'
 
 const LoginForm = ({
   values,

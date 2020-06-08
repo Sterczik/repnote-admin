@@ -8,8 +8,8 @@ import {
 import {
   getTraining,
   removeTraining
-} from '../../app/global/actions'
-import CustomAlert from '../../components/Alert/CustomAlert'
+} from 'store/global/actions'
+import CustomAlert from 'components/Alert/CustomAlert'
 
 class TrainingPage extends Component {
   componentDidMount() {

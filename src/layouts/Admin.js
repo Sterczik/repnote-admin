@@ -1,16 +1,16 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import AdminNavbar from '../components/Navbars/AdminNavbar'
-import AdminFooter from '../components/Footer/AdminFooter'
-import Sidebar from '../components/Sidebar/Sidebar'
+import AdminNavbar from 'components/Navbars/AdminNavbar'
+import AdminFooter from 'components/Footer/AdminFooter'
+import Sidebar from 'components/Sidebar/Sidebar'
 
-import { routes } from '../routes'
-import UserPage from '../containers/User/index'
-import TrainingPage from '../containers/Training/index'
-import TrainingCategoryPage from '../containers/TrainingCategory/index'
-import ExerciseCategoryPage from '../containers/ExerciseCategory/index'
-import ContactMessagePage from '../containers/ContactMessage/index'
+import { routes } from 'routes'
+import UserPage from 'containers/User/index'
+import TrainingPage from 'containers/Training/index'
+import TrainingCategoryPage from 'containers/TrainingCategory/index'
+import ExerciseCategoryPage from 'containers/ExerciseCategory/index'
+import ContactMessagePage from 'containers/ContactMessage/index'
 
 class Admin extends React.Component {
   componentDidUpdate(e) {

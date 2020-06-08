@@ -9,7 +9,7 @@ import {
 
 import {
   getContactMessages
-} from '../../app/global/actions'
+} from 'store/global/actions'
 
 class ContactMessagesPage extends Component {
   componentDidMount() {

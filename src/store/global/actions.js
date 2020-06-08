@@ -1,12 +1,12 @@
 import { globalConstants } from './constants'
-import { history } from '../../helpers/history'
+import { history } from 'helpers/history'
 
-import { ServiceTrainings } from '../../services/trainings/trainings'
-import { ServiceUsers } from '../../services/users/users'
-import { ServiceTrainingCategories } from '../../services/trainingCategories/trainingCategories'
-import { ServiceExerciseCategories } from '../../services/exerciseCategories/exerciseCategories'
-import { ServiceContactMessages } from '../../services/contactMessages/contactMessages'
-import { ServiceTokens } from '../../services/tokens/tokens'
+import { ServiceTrainings } from 'services/trainings/trainings'
+import { ServiceUsers } from 'services/users/users'
+import { ServiceTrainingCategories } from 'services/trainingCategories/trainingCategories'
+import { ServiceExerciseCategories } from 'services/exerciseCategories/exerciseCategories'
+import { ServiceContactMessages } from 'services/contactMessages/contactMessages'
+import { ServiceTokens } from 'services/tokens/tokens'
 
 // Trainings
 export function getTrainings() {

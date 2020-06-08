@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode'
 import moment from 'moment'
-import { authActions } from '../../app/auth/actions'
+import { authActions } from 'store/auth/actions'
 
 export function jwt({ dispatch, getState }) {
   return (next) => (action) => {

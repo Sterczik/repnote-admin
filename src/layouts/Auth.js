@@ -2,10 +2,10 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { Container, Row, Col } from 'reactstrap'
-import AuthNavbar from '../components/Navbars/AuthNavbar'
-import AuthFooter from '../components/Footer/AuthFooter'
+import AuthNavbar from 'components/Navbars/AuthNavbar'
+import AuthFooter from 'components/Footer/AuthFooter'
 
-import { routes } from '../routes'
+import { routes } from 'routes'
 
 class Auth extends React.Component {
   componentDidMount() {

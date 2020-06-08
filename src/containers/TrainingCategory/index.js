@@ -5,15 +5,15 @@ import {
   Button
 } from 'reactstrap'
 
-import EditTrainingCategoryForm from '../../components/Forms/EditTrainingCategoryForm/EditTrainingCategoryForm'
+import EditTrainingCategoryForm from 'components/Forms/EditTrainingCategoryForm/EditTrainingCategoryForm'
 
 import {
   getTrainingCategory,
   editTrainingCategory,
   removeTrainingCategory
-} from '../../app/global/actions'
+} from 'store/global/actions'
 
-import CustomAlert from '../../components/Alert/CustomAlert'
+import CustomAlert from 'components/Alert/CustomAlert'
 
 class TrainingCategoryPage extends Component {
   componentDidMount() {

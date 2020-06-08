@@ -4,15 +4,15 @@ import { Provider } from 'react-redux'
 import { Router, Switch, Route, Redirect } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker'
 
-import configureStore from './store/configureStore'
-import { history } from './helpers/history'
+import configureStore from 'storeConfig/configureStore'
+import { history } from 'helpers/history'
 
-import './assets/vendor/nucleo/css/nucleo.css'
-import './assets/vendor/@fortawesome/fontawesome-free/css/all.min.css'
-import './assets/scss/argon-dashboard-react.scss'
+import 'assets/vendor/nucleo/css/nucleo.css'
+import 'assets/vendor/@fortawesome/fontawesome-free/css/all.min.css'
+import 'assets/scss/argon-dashboard-react.scss'
 
-import AdminLayout from './layouts/Admin'
-import AuthLayout from './layouts/Auth'
+import AdminLayout from 'layouts/Admin'
+import AuthLayout from 'layouts/Auth'
 
 const initialState = {}
 const store = configureStore(initialState, history)

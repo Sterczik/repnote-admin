@@ -11,7 +11,7 @@ import {
   Container,
   Media
 } from 'reactstrap'
-import { authActions } from '../../app/auth/actions'
+import { authActions } from 'store/auth/actions'
 
 class AdminNavbar extends React.Component {
   render() {

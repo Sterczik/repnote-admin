@@ -1,11 +1,11 @@
-import Dashboard from './containers/Dashboard/index'
-import UsersPage from './containers/Users/index'
-import TrainingsPage from './containers/Trainings/index'
-import TrainingCategoriesPage from './containers/TrainingCategories/index'
-import ExerciseCategoriesPage from './containers/ExerciseCategories/index'
-import ContactMessagesPage from './containers/ContactMessages/index'
-import TokensPage from './containers/Tokens/index'
-import LoginPage from './containers/Login/index'
+import Dashboard from 'containers/Dashboard/index'
+import UsersPage from 'containers/Users/index'
+import TrainingsPage from 'containers/Trainings/index'
+import TrainingCategoriesPage from 'containers/TrainingCategories/index'
+import ExerciseCategoriesPage from 'containers/ExerciseCategories/index'
+import ContactMessagesPage from 'containers/ContactMessages/index'
+import TokensPage from 'containers/Tokens/index'
+import LoginPage from 'containers/Login/index'
 
 const routes = [
   {

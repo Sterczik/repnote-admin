@@ -15,7 +15,7 @@ import {
 
 import {
   addTrainingCategory
-} from '../../../app/global/actions'
+} from 'store/global/actions'
 
 const TrainingCategoryForm = ({
   values,

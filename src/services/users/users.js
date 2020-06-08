@@ -1,4 +1,4 @@
-import Api from '../../helpers/api'
+import Api from 'helpers/api'
 
 function getUsers() {
     return Api(true).get('/users')

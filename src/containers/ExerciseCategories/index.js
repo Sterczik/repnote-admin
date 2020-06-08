@@ -7,10 +7,10 @@ import {
   Button
 } from 'reactstrap'
 
-import ExerciseCategoryForm from '../../components/Forms/ExerciseCategoryForm/ExerciseCategoryForm'
+import ExerciseCategoryForm from 'components/Forms/ExerciseCategoryForm/ExerciseCategoryForm'
 import {
   getExerciseCategories
-} from '../../app/global/actions'
+} from 'store/global/actions'
 
 class ExerciseCategoriesPage extends Component {
   componentDidMount() {

@@ -6,8 +6,8 @@ import {
 } from 'redux'
 import thunk from 'redux-thunk'
 
-import authReducer from '../app/auth/reducer'
-import globalReducer from '../app/global/reducer'
+import authReducer from 'store/auth/reducer'
+import globalReducer from 'store/global/reducer'
 
 import { jwt } from './middlewares/jwt'
 

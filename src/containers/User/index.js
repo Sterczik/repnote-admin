@@ -8,8 +8,8 @@ import {
 import {
   getUser,
   removeUser
-} from '../../app/global/actions'
-import CustomAlert from '../../components/Alert/CustomAlert'
+} from 'store/global/actions'
+import CustomAlert from 'components/Alert/CustomAlert'
 
 class UserPage extends Component {
   componentDidMount() {

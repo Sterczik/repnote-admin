@@ -9,7 +9,7 @@ import {
 
 import {
   getTrainings
-} from '../../app/global/actions'
+} from 'store/global/actions'
 
 class TrainingsPage extends Component {
   componentDidMount() {

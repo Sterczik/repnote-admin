@@ -9,7 +9,7 @@ import {
 
 import {
   getUsers
-} from '../../app/global/actions'
+} from 'store/global/actions'
 
 class UsersPage extends Component {
   componentDidMount() {

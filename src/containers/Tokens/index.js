@@ -9,7 +9,7 @@ import {
 import {
   getTokens,
   removeToken
-} from '../../app/global/actions'
+} from 'store/global/actions'
 
 class TokensPage extends Component {
   componentDidMount() {
