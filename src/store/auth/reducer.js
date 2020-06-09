@@ -11,13 +11,15 @@ const initialState = accessToken && refreshToken ? {
     refreshToken: refreshToken
   },
   userInfo: {},
-  freshTokenPromise: null
+  freshTokenPromise: null,
+  error: {}
 } : {
   loggedIn: false,
   loggingIn: false,
   user: {},
   userInfo: {},
-  freshTokenPromise: null
+  freshTokenPromise: null,
+  error: {}
 }
 
 export default (state = initialState, action) => {
@@ -92,6 +94,21 @@ export default (state = initialState, action) => {
         ...state,
         loggedIn: false,
         user: {}
+      }
+    // Change Password
+    case authConstants.CHANGE_PASSWORD_IN_PROCESS:
+      return {
+        ...state
+      }
+    case authConstants.CHANGE_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        error: {}
+      }
+    case authConstants.CHANGE_PASSWORD_FAILURE:
+      return {
+        ...state,
+        error: action.error
       }
     // Default
     default:

@@ -5,6 +5,7 @@ import TrainingCategoriesPage from 'containers/TrainingCategories/index'
 import ExerciseCategoriesPage from 'containers/ExerciseCategories/index'
 import ContactMessagesPage from 'containers/ContactMessages/index'
 import TokensPage from 'containers/Tokens/index'
+import ChangePasswordPage from 'containers/ChangePassword/index'
 import LoginPage from 'containers/Login/index'
 
 const routes = [
@@ -55,6 +56,13 @@ const routes = [
     name: "Tokens",
     icon: "ni ni-collection text-info",
     component: TokensPage,
+    layout: "/admin"
+  },
+  {
+    path: "/change-password",
+    name: "Change Password",
+    icon: "ni ni-key-25 text-info",
+    component: ChangePasswordPage,
     layout: "/admin"
   },
   {

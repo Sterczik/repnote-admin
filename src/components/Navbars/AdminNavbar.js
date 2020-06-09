@@ -39,6 +39,9 @@ class AdminNavbar extends React.Component {
                     <h6 className="text-overflow m-0">Welcome!</h6>
                   </DropdownItem>
                   <DropdownItem divider />
+                  <DropdownItem to="/admin/change-password" tag={Link}>
+                    Change password
+                  </DropdownItem>
                   <DropdownItem onClick={this.props.logout}>
                     <span>Logout</span>
                   </DropdownItem>

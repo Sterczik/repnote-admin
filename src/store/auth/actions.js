@@ -122,8 +122,37 @@ function refreshToken(dispatch, refreshToken) {
   return freshTokenPromise
 }
 
+function changePassword(oldPassword, newPassword, newPasswordConfirm) {
+  const changePasswordInProcess = () => ({
+    type: authConstants.CHANGE_PASSWORD_IN_PROCESS
+  })
+
+  const changePasswordSuccess = () => ({
+    type: authConstants.CHANGE_PASSWORD_SUCCESS
+  })
+
+  const changePasswordFailure = (error) => ({
+    type: authConstants.CHANGE_PASSWORD_FAILURE,
+    error
+  })
+
+  return (dispatch) => {
+    dispatch(changePasswordInProcess())
+
+    ServiceAdmins.changePassword(oldPassword, newPassword, newPasswordConfirm)
+      .then(() => {
+        dispatch(changePasswordSuccess())
+        history.push('/admin/dashboard')
+      })
+      .catch((error) => {
+        dispatch(changePasswordFailure(error.response.data))
+      })
+  }
+}
+
 export const authActions = {
   logout,
   login,
-  refreshToken
+  refreshToken,
+  changePassword
 }

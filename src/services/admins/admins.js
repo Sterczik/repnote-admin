@@ -23,8 +23,18 @@ function refreshToken(refreshToken) {
     return Api().post('admins/refreshToken', { refreshToken })
 }
 
+function changePassword(oldPassword, newPassword, newPasswordConfirm) {
+    const body = JSON.stringify({
+      oldPassword: oldPassword,
+      password: newPassword,
+      password_confirmation: newPasswordConfirm
+    })
+    return Api(true).put('/admins/change-password', body)
+}
+
 export const ServiceAdmins = {
     login,
     logout,
-    refreshToken
+    refreshToken,
+    changePassword
 }
