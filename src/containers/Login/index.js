@@ -1,8 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withFormik, Form as FormikForm, ErrorMessage } from 'formik'
-import validationSchema from './validationSchema'
-
 import {
   Button,
   Card,
@@ -13,20 +11,26 @@ import {
   InputGroupAddon,
   InputGroupText,
   InputGroup,
-  Col
+  Col,
+  Alert
 } from 'reactstrap'
 
+import validationSchema from './validationSchema'
 import { authActions } from 'store/auth/actions'
 
 const LoginForm = ({
   values,
-  errors,
-  touched,
-  handleChange
+  handleChange,
+  error
 }) => (
   <Col lg="5" md="7">
     <Card className="bg-secondary shadow border-0">
       <CardBody className="px-lg-5 py-lg-5">
+        { error.errors && error.errors.message ? (
+          <Alert color="danger">
+            <span>{ error.errors.message }</span>
+          </Alert>
+        ) : null }
         <div className="text-center text-muted mb-4">
           <small>Sign in with credentials</small>
         </div>
@@ -97,8 +101,12 @@ const LoginFormFormik = withFormik({
   }
 })(LoginForm)
 
+const mapStateToProps = (state) => ({
+  error: state.auth.error
+})
+
 const mapDispatchToProps = (dispatch) => ({
   login: (email, password) => dispatch(authActions.login(email, password))
 })
 
-export default connect(undefined, mapDispatchToProps)(LoginFormFormik)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginFormFormik)

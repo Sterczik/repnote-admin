@@ -23,13 +23,6 @@ class Sidebar extends React.Component {
   state = {
     collapseOpen: false
   }
-  constructor(props) {
-    super(props)
-    this.activeRoute.bind(this)
-  }
-  activeRoute(routeName) {
-    return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : ''
-  }
   toggleCollapse = () => {
     this.setState({
       collapseOpen: !this.state.collapseOpen
@@ -40,7 +33,7 @@ class Sidebar extends React.Component {
       collapseOpen: false
     })
   }
-  createLinks = routes => {
+  createLinks = (routes) => {
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
         return (
@@ -63,18 +56,6 @@ class Sidebar extends React.Component {
   }
   render() {
     const { routes, logo } = this.props
-    let navbarBrandProps
-    if (logo && logo.innerLink) {
-      navbarBrandProps = {
-        to: logo.innerLink,
-        tag: Link
-      }
-    } else if (logo && logo.outterLink) {
-      navbarBrandProps = {
-        href: logo.outterLink,
-        target: "_blank"
-      }
-    }
     return (
       <Navbar
         className="navbar-vertical fixed-left navbar-light bg-white"
@@ -89,15 +70,13 @@ class Sidebar extends React.Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          {logo ? (
-            <NavbarBrand className="pt-0" {...navbarBrandProps}>
-              <img
-                alt={logo.imgAlt}
-                className="navbar-brand-img"
-                src={logo.imgSrc}
-              />
-            </NavbarBrand>
-          ) : null}
+          <NavbarBrand className="pt-0" to={logo.innerLink} tag={Link}>
+            <img
+              alt={logo.imgAlt}
+              className="navbar-brand-img"
+              src={logo.imgSrc}
+            />
+          </NavbarBrand>
           <Nav className="align-items-center d-md-none">
             <UncontrolledDropdown nav>
               <DropdownToggle nav>
@@ -106,11 +85,7 @@ class Sidebar extends React.Component {
                 </Media>
               </DropdownToggle>
               <DropdownMenu className="dropdown-menu-arrow" right>
-                <DropdownItem className="noti-title" header tag="div">
-                  <h6 className="text-overflow m-0">Welcome!</h6>
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem to="/admin/change-password" tag={Link}>
+                <DropdownItem to="/admin/changePassword" tag={Link}>
                   Change password
                 </DropdownItem>
                 <DropdownItem onClick={this.props.logout}>
@@ -122,19 +97,11 @@ class Sidebar extends React.Component {
           <Collapse navbar isOpen={this.state.collapseOpen}>
             <div className="navbar-collapse-header d-md-none">
               <Row>
-                {logo ? (
-                  <Col className="collapse-brand" xs="6">
-                    {logo.innerLink ? (
-                      <Link to={logo.innerLink}>
-                        <img alt={logo.imgAlt} src={logo.imgSrc} />
-                      </Link>
-                    ) : (
-                      <a href={logo.outterLink}>
-                        <img alt={logo.imgAlt} src={logo.imgSrc} />
-                      </a>
-                    )}
-                  </Col>
-                ) : null}
+                <Col className="collapse-brand" xs="6">
+                  <span>
+                    <img alt={logo.imgAlt} src={logo.imgSrc} />
+                  </span>
+                </Col>
                 <Col className="collapse-close" xs="6">
                   <button
                     className="navbar-toggler"

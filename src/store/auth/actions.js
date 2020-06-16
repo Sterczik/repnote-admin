@@ -69,7 +69,7 @@ function login(email, password) {
         }
       })
       .catch((error) => {
-        dispatch(loginFailure(error))
+        dispatch(loginFailure(error.response.data))
       })
   }
 }

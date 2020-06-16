@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react'
 import { NavItem, NavLink, Nav, Container, Row, Col } from 'reactstrap'
 
@@ -6,25 +5,12 @@ class Login extends React.Component {
   render() {
     return (
       <>
-        <footer className="py-5">
+        <footer className="py-3">
           <Container>
             <Row className="align-items-center justify-content-xl-between">
               <Col xl="6">
                 <div className="copyright text-center text-xl-left text-muted">
-                  © {new Date().getFullYear()}{" "}
-                  <a
-                    href="!#"
-                    target="_blank"
-                  >
-                    Sterczik
-                  </a>{" | "}
-                  Theme created by {" "}
-                  <a
-                    href="https://www.creative-tim.com"
-                    target="_blank"
-                  >
-                    Creative Tim
-                  </a>
+                  © 2020 Kamil Sterczewski
                 </div>
               </Col>
               <Col xl="6">

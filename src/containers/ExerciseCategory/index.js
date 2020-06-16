@@ -5,14 +5,13 @@ import {
   Button
 } from 'reactstrap'
 
-import EditExerciseCategoryForm from 'components/Forms/EditExerciseCategoryForm/EditExerciseCategoryForm'
-
 import {
   getExerciseCategory,
   editExerciseCategory,
   removeExerciseCategory
 } from 'store/global/actions'
 
+import EditExerciseCategoryForm from 'components/Forms/EditExerciseCategoryForm/EditExerciseCategoryForm'
 import CustomAlert from 'components/Alert/CustomAlert'
 
 class ExerciseCategoryPage extends Component {

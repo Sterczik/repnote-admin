@@ -36,6 +36,29 @@ class TrainingPage extends Component {
               <p className="mb-0"><b>Username: </b>{this.props.training.user.name}</p>
               <p className="mb-0"><b>Private: </b>{String(this.props.training.private)}</p>
             </div>
+            <div className="mb-3">
+              <p className="mb-2"><b>Subtrainings</b></p>
+              { this.props.training.subtrainings.map((subtraining) => (
+                <div key={subtraining.id} className="border-top py-2">
+                  <p className="mb-1"><b>{ subtraining.name }</b></p>
+                  <ol className="pl-4">
+                    { subtraining.exercises.map((exercise) => (
+                      <>
+                        <li className="mb-1">{ exercise.name }</li>
+                        <ul className="mb-1 pl-4">
+                          { exercise.rounds.map((round) => (
+                            <li className="mb-1" key={round.id}>
+                              <p className="mb-0">Weight: { round.weight } kg</p>
+                              <p className="mb-0">Reps: { round.reps }</p>
+                            </li>
+                          )) }
+                        </ul>
+                      </>
+                    )) }
+                  </ol>
+                </div>
+              )) }
+            </div>
             <Button
               color="primary"
               onClick={() => this.remove(this.props.training.id)}

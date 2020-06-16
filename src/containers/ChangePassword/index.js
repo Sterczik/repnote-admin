@@ -1,8 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withFormik, Form as FormikForm, ErrorMessage } from 'formik'
-import validationSchema from './validationSchema'
-
 import {
   Button,
   FormGroup,
@@ -12,17 +10,15 @@ import {
   InputGroupText,
   InputGroup,
   Row,
-  Col
+  Col,
+  Alert
 } from 'reactstrap'
 
+import validationSchema from './validationSchema'
 import { authActions } from 'store/auth/actions'
-
-import { Alert } from 'reactstrap'
 
 const ChangePasswordForm = ({
   values,
-  errors,
-  touched,
   handleChange,
   error
 }) => (
@@ -85,7 +81,7 @@ const ChangePasswordForm = ({
                   </InputGroupText>
                 </InputGroupAddon>
                 <Input
-                  placeholder="New password"
+                  placeholder="New password confirmation"
                   type="password"
                   id="newPasswordConfirm"
                   name="newPasswordConfirm"

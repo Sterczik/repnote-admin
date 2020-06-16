@@ -40,14 +40,16 @@ export default (state = initialState, action) => {
         user: {
           accessToken: action.tokens.accessToken,
           refreshToken: action.tokens.refreshToken
-        }
+        },
+        error: {}
       }
     case authConstants.LOGIN_FAILURE:
       return {
         ...state,
         loggingIn: false,
         loggedIn: false,
-        user: {}
+        user: {},
+        error: action.error
       }
     // Refresh Token
     case authConstants.REFRESH_TOKEN_IN_PROCESS:

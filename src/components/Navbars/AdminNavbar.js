@@ -19,12 +19,11 @@ class AdminNavbar extends React.Component {
       <>
         <Navbar className="navbar-dark bg-gradient-info d-none d-md-flex" expand="md" id="navbar-main">
           <Container fluid>
-            <Link
+            <span
               className="h4 mb-0 text-white text-uppercase d-none d-md-inline-block"
-              to="/"
             >
               {this.props.brandText}
-            </Link>
+            </span>
             <Nav className="align-items-center" navbar>
               <UncontrolledDropdown nav>
                 <DropdownToggle className="pr-0" nav>
@@ -35,11 +34,7 @@ class AdminNavbar extends React.Component {
                   </Media>
                 </DropdownToggle>
                 <DropdownMenu className="dropdown-menu-arrow" right>
-                  <DropdownItem className="noti-title" header tag="div">
-                    <h6 className="text-overflow m-0">Welcome!</h6>
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem to="/admin/change-password" tag={Link}>
+                  <DropdownItem to="/admin/changePassword" tag={Link}>
                     Change password
                   </DropdownItem>
                   <DropdownItem onClick={this.props.logout}>

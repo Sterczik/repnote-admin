@@ -59,7 +59,7 @@ const routes = [
     layout: "/admin"
   },
   {
-    path: "/change-password",
+    path: "/changePassword",
     name: "Change Password",
     icon: "ni ni-key-25 text-info",
     component: ChangePasswordPage,
