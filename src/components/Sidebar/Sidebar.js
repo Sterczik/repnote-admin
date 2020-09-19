@@ -81,7 +81,7 @@ class Sidebar extends React.Component {
             <UncontrolledDropdown nav>
               <DropdownToggle nav>
                 <Media className="align-items-center">
-                  <span className="fa fa-user" />
+                  <span className="ni ni-single-02" />
                 </Media>
               </DropdownToggle>
               <DropdownMenu className="dropdown-menu-arrow" right>

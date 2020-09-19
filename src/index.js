@@ -8,7 +8,6 @@ import configureStore from 'storeConfig/configureStore'
 import { history } from 'helpers/history'
 
 import 'assets/vendor/nucleo/css/nucleo.css'
-import 'assets/vendor/@fortawesome/fontawesome-free/css/all.min.css'
 import 'assets/scss/argon-dashboard-react.scss'
 
 import AdminLayout from 'layouts/Admin'

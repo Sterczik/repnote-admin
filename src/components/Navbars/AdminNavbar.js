@@ -29,7 +29,7 @@ class AdminNavbar extends React.Component {
                 <DropdownToggle className="pr-0" nav>
                   <Media className="ml-2 d-none d-md-block align-items-center">
                     <span className="mb-0 text-sm font-weight-bold">
-                      <span className="fa fa-user-circle" />
+                      <span className="ni ni-single-02" />
                     </span>
                   </Media>
                 </DropdownToggle>

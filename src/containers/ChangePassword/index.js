@@ -37,7 +37,7 @@ const ChangePasswordForm = ({
               <InputGroup className="input-group-alternative">
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText>
-                    <i className="fa fa-lock" />
+                    <i className="ni ni-lock-circle-open" />
                   </InputGroupText>
                 </InputGroupAddon>
                 <Input
@@ -57,7 +57,7 @@ const ChangePasswordForm = ({
               <InputGroup className="input-group-alternative">
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText>
-                    <i className="fa fa-lock" />
+                    <i className="ni ni-lock-circle-open" />
                   </InputGroupText>
                 </InputGroupAddon>
                 <Input
@@ -77,7 +77,7 @@ const ChangePasswordForm = ({
               <InputGroup className="input-group-alternative">
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText>
-                    <i className="fa fa-lock" />
+                    <i className="ni ni-lock-circle-open" />
                   </InputGroupText>
                 </InputGroupAddon>
                 <Input
