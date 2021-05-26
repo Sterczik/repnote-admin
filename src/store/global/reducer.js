@@ -21,7 +21,7 @@ const globalReducerDefaultState = {
   error: {}
 }
 
-export default (state = globalReducerDefaultState, action) => {
+const state = (state = globalReducerDefaultState, action) => {
   switch (action.type) {
     // Get Trainings
     case globalConstants.GET_TRAININGS_IN_PROCESS:
@@ -169,21 +169,21 @@ export default (state = globalReducerDefaultState, action) => {
         error: action.error
       }
     // Get Exercise Categories
-    case globalConstants.GET_EXERCISE_CATEGORIES_IN_PROCESS:
-      return {
-        ...state,
-        exerciseCategories: []
-      }
-    case globalConstants.GET_EXERCISE_CATEGORIES_SUCCESS:
-      return {
-        ...state,
-        exerciseCategories: action.exerciseCategories
-      }
-    case globalConstants.GET_EXERCISE_CATEGORIES_FAILURE:
-      return {
-        ...state,
-        exerciseCategories: []
-      }
+    // case globalConstants.GET_EXERCISE_CATEGORIES_IN_PROCESS:
+    //   return {
+    //     ...state,
+    //     exerciseCategories: []
+    //   }
+    // case globalConstants.GET_EXERCISE_CATEGORIES_SUCCESS:
+    //   return {
+    //     ...state,
+    //     exerciseCategories: action.exerciseCategories
+    //   }
+    // case globalConstants.GET_EXERCISE_CATEGORIES_FAILURE:
+    //   return {
+    //     ...state,
+    //     exerciseCategories: []
+    //   }
     // Get Exercise Category
     case globalConstants.GET_EXERCISE_CATEGORY_IN_PROCESS:
       return {
@@ -234,21 +234,21 @@ export default (state = globalReducerDefaultState, action) => {
         error: action.error
       }
     // Get Contact Messages
-    case globalConstants.GET_CONTACT_MESSAGES_IN_PROCESS:
-      return {
-        ...state,
-        contactMessages: []
-      }
-    case globalConstants.GET_CONTACT_MESSAGES_SUCCESS:
-      return {
-        ...state,
-        contactMessages: action.contactMessages
-      }
-    case globalConstants.GET_CONTACT_MESSAGES_FAILURE:
-      return {
-        ...state,
-        contactMessages: []
-      }
+    // case globalConstants.GET_CONTACT_MESSAGES_IN_PROCESS:
+    //   return {
+    //     ...state,
+    //     contactMessages: []
+    //   }
+    // case globalConstants.GET_CONTACT_MESSAGES_SUCCESS:
+    //   return {
+    //     ...state,
+    //     contactMessages: action.contactMessages
+    //   }
+    // case globalConstants.GET_CONTACT_MESSAGES_FAILURE:
+    //   return {
+    //     ...state,
+    //     contactMessages: []
+    //   }
     // Get Contact Message
     case globalConstants.GET_CONTACT_MESSAGE_IN_PROCESS:
       return {
@@ -280,21 +280,21 @@ export default (state = globalReducerDefaultState, action) => {
         error: action.error
       }
     // Get Tokens
-    case globalConstants.GET_TOKENS_IN_PROCESS:
-      return {
-        ...state,
-        tokens: []
-      }
-    case globalConstants.GET_TOKENS_SUCCESS:
-      return {
-        ...state,
-        tokens: action.tokens
-      }
-    case globalConstants.GET_TOKENS_FAILURE:
-      return {
-        ...state,
-        tokens: []
-      }
+    // case globalConstants.GET_TOKENS_IN_PROCESS:
+    //   return {
+    //     ...state,
+    //     tokens: []
+    //   }
+    // case globalConstants.GET_TOKENS_SUCCESS:
+    //   return {
+    //     ...state,
+    //     tokens: action.tokens
+    //   }
+    // case globalConstants.GET_TOKENS_FAILURE:
+    //   return {
+    //     ...state,
+    //     tokens: []
+    //   }
     // Remove Token
     case globalConstants.REMOVE_TOKEN_IN_PROCESS:
       return {
@@ -313,3 +313,5 @@ export default (state = globalReducerDefaultState, action) => {
       return state
   }
 }
+
+export default state

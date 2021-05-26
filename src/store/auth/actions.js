@@ -1,7 +1,7 @@
 import { authConstants } from './constants'
 import { history } from 'helpers/history'
 
-import { ServiceAdmins } from 'services/admins/admins'
+import { ServiceAdmins } from 'services/admins'
 
 function logout() {
   const logoutInProcess = () => ({

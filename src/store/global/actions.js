@@ -1,42 +1,42 @@
 import { globalConstants } from './constants'
 import { history } from 'helpers/history'
 
-import { ServiceTrainings } from 'services/trainings/trainings'
-import { ServiceUsers } from 'services/users/users'
-import { ServiceTrainingCategories } from 'services/trainingCategories/trainingCategories'
-import { ServiceExerciseCategories } from 'services/exerciseCategories/exerciseCategories'
-import { ServiceContactMessages } from 'services/contactMessages/contactMessages'
-import { ServiceTokens } from 'services/tokens/tokens'
+import { ServiceTrainings } from 'services/trainings'
+import { ServiceUsers } from 'services/users'
+import { ServiceTrainingCategories } from 'services/trainingCategories'
+import { ServiceExerciseCategories } from 'services/exerciseCategories'
+import { ServiceContactMessages } from 'services/contactMessages'
+import { ServiceTokens } from 'services/tokens'
 
 // Trainings
-export function getTrainings() {
-  const getTrainingsInProcess = () => ({
-    type: globalConstants.GET_TRAININGS_IN_PROCESS
-  })
+// export function getTrainings() {
+//   const getTrainingsInProcess = () => ({
+//     type: globalConstants.GET_TRAININGS_IN_PROCESS
+//   })
 
-  const getTrainingsSuccess = (trainings) => ({
-    type: globalConstants.GET_TRAININGS_SUCCESS,
-    trainings
-  })
+//   const getTrainingsSuccess = (trainings) => ({
+//     type: globalConstants.GET_TRAININGS_SUCCESS,
+//     trainings
+//   })
 
-  const getTrainingsFailure = (error) => ({
-    type: globalConstants.GET_TRAININGS_FAILURE,
-    error
-  })
+//   const getTrainingsFailure = (error) => ({
+//     type: globalConstants.GET_TRAININGS_FAILURE,
+//     error
+//   })
 
-  return (dispatch) => {
-    dispatch(getTrainingsInProcess())
+//   return (dispatch) => {
+//     dispatch(getTrainingsInProcess())
     
-    ServiceTrainings.getTrainings()
-      .then((res) => {
-        const trainings = res.data
-        dispatch(getTrainingsSuccess(trainings))
-      })
-      .catch((error) => {
-        dispatch(getTrainingsFailure(error))
-      })
-  }
-}
+//     ServiceTrainings.getTrainings()
+//       .then((res) => {
+//         const trainings = res.data
+//         dispatch(getTrainingsSuccess(trainings))
+//       })
+//       .catch((error) => {
+//         dispatch(getTrainingsFailure(error))
+//       })
+//   }
+// }
 
 export function getTraining(id) {
   const getTrainingInProcess = () => ({
@@ -96,34 +96,34 @@ export function removeTraining(id) {
 }
 
 // Users
-export function getUsers() {
-  const getUsersInProcess = () => ({
-    type: globalConstants.GET_USERS_IN_PROCESS
-  })
+// export function getUsers() {
+//   const getUsersInProcess = () => ({
+//     type: globalConstants.GET_USERS_IN_PROCESS
+//   })
 
-  const getTrainingsSuccess = (users) => ({
-    type: globalConstants.GET_USERS_SUCCESS,
-    users
-  })
+//   const getTrainingsSuccess = (users) => ({
+//     type: globalConstants.GET_USERS_SUCCESS,
+//     users
+//   })
 
-  const getTrainingsFailure = (error) => ({
-    type: globalConstants.GET_USERS_FAILURE,
-    error
-  })
+//   const getTrainingsFailure = (error) => ({
+//     type: globalConstants.GET_USERS_FAILURE,
+//     error
+//   })
 
-  return (dispatch) => {
-    dispatch(getUsersInProcess())
+//   return (dispatch) => {
+//     dispatch(getUsersInProcess())
     
-    ServiceUsers.getUsers()
-      .then((res) => {
-        const users = res.data.users
-        dispatch(getTrainingsSuccess(users))
-      })
-      .catch((error) => {
-        dispatch(getTrainingsFailure(error))
-      })
-  }
-}
+//     ServiceUsers.getUsers()
+//       .then((res) => {
+//         const users = res.data
+//         dispatch(getTrainingsSuccess(users))
+//       })
+//       .catch((error) => {
+//         dispatch(getTrainingsFailure(error))
+//       })
+//   }
+// }
 
 export function getUser(id) {
   const getUserInProcess = () => ({
@@ -328,34 +328,34 @@ export function removeTrainingCategory(id) {
 }
 
 // Exercise Categories
-export function getExerciseCategories() {
-  const getExerciseCategoriesInProcess = () => ({
-    type: globalConstants.GET_EXERCISE_CATEGORIES_IN_PROCESS
-  })
+// export function getExerciseCategories() {
+//   const getExerciseCategoriesInProcess = () => ({
+//     type: globalConstants.GET_EXERCISE_CATEGORIES_IN_PROCESS
+//   })
 
-  const getExerciseCategoriesSuccess = (exerciseCategories) => ({
-    type: globalConstants.GET_EXERCISE_CATEGORIES_SUCCESS,
-    exerciseCategories
-  })
+//   const getExerciseCategoriesSuccess = (exerciseCategories) => ({
+//     type: globalConstants.GET_EXERCISE_CATEGORIES_SUCCESS,
+//     exerciseCategories
+//   })
 
-  const getExerciseCategoriesFailure = (error) => ({
-    type: globalConstants.GET_EXERCISE_CATEGORIES_FAILURE,
-    error
-  })
+//   const getExerciseCategoriesFailure = (error) => ({
+//     type: globalConstants.GET_EXERCISE_CATEGORIES_FAILURE,
+//     error
+//   })
 
-  return (dispatch) => {
-    dispatch(getExerciseCategoriesInProcess())
+//   return (dispatch) => {
+//     dispatch(getExerciseCategoriesInProcess())
 
-    ServiceExerciseCategories.getExerciseCategories()
-      .then((res) => {
-        const exerciseCategories = res.data
-        dispatch(getExerciseCategoriesSuccess(exerciseCategories))
-      })
-      .catch((error) => {
-        dispatch(getExerciseCategoriesFailure(error))
-      })
-  }
-}
+//     ServiceExerciseCategories.getExerciseCategories()
+//       .then((res) => {
+//         const exerciseCategories = res.data
+//         dispatch(getExerciseCategoriesSuccess(exerciseCategories))
+//       })
+//       .catch((error) => {
+//         dispatch(getExerciseCategoriesFailure(error))
+//       })
+//   }
+// }
 
 export function getExerciseCategory(id) {
   const getExerciseCategoryInProcess = () => ({
@@ -386,34 +386,34 @@ export function getExerciseCategory(id) {
   }
 }
 
-export function addExerciseCategory(name) {
-  const addExerciseCategoryInProcess = () => ({
-    type: globalConstants.ADD_EXERCISE_CATEGORY_IN_PROCESS
-  })
+// export function addExerciseCategory(name) {
+//   const addExerciseCategoryInProcess = () => ({
+//     type: globalConstants.ADD_EXERCISE_CATEGORY_IN_PROCESS
+//   })
 
-  const addExerciseCategorySuccess = () => ({
-    type: globalConstants.ADD_EXERCISE_CATEGORY_SUCCESS
-  })
+//   const addExerciseCategorySuccess = () => ({
+//     type: globalConstants.ADD_EXERCISE_CATEGORY_SUCCESS
+//   })
 
-  const addExerciseCategoryFailure = (error) => ({
-    type: globalConstants.ADD_EXERCISE_CATEGORY_FAILURE,
-    error
-  })
+//   const addExerciseCategoryFailure = (error) => ({
+//     type: globalConstants.ADD_EXERCISE_CATEGORY_FAILURE,
+//     error
+//   })
 
-  return (dispatch) => {
-    dispatch(addExerciseCategoryInProcess())
+//   return (dispatch) => {
+//     dispatch(addExerciseCategoryInProcess())
 
-    ServiceExerciseCategories.addExerciseCategory({ name })
-      .then(() => {
-        dispatch(addExerciseCategorySuccess())
-        history.push('/admin')
-        history.push('/admin/exerciseCategories')
-      })
-      .catch((error) => {
-        dispatch(addExerciseCategoryFailure(error))
-      })
-  }
-}
+//     ServiceExerciseCategories.addExerciseCategory({ name })
+//       .then(() => {
+//         dispatch(addExerciseCategorySuccess())
+//         history.push('/admin')
+//         history.push('/admin/exerciseCategories')
+//       })
+//       .catch((error) => {
+//         dispatch(addExerciseCategoryFailure(error))
+//       })
+//   }
+// }
 
 export function editExerciseCategory(id, data) {
   const editExerciseCategoryInProcess = () => ({
@@ -472,34 +472,34 @@ export function removeExerciseCategory(id) {
   }
 }
 
-export function getContactMessages() {
-  const getContactMessagesInProcess = () => ({
-    type: globalConstants.GET_CONTACT_MESSAGES_IN_PROCESS
-  })
+// export function getContactMessages() {
+//   const getContactMessagesInProcess = () => ({
+//     type: globalConstants.GET_CONTACT_MESSAGES_IN_PROCESS
+//   })
 
-  const getContactMessagesSuccess = (contactMessages) => ({
-    type: globalConstants.GET_CONTACT_MESSAGES_SUCCESS,
-    contactMessages
-  })
+//   const getContactMessagesSuccess = (contactMessages) => ({
+//     type: globalConstants.GET_CONTACT_MESSAGES_SUCCESS,
+//     contactMessages
+//   })
 
-  const getContactMessagesFailure = (error) => ({
-    type: globalConstants.GET_CONTACT_MESSAGES_FAILURE,
-    error
-  })
+//   const getContactMessagesFailure = (error) => ({
+//     type: globalConstants.GET_CONTACT_MESSAGES_FAILURE,
+//     error
+//   })
 
-  return (dispatch) => {
-    dispatch(getContactMessagesInProcess())
+//   return (dispatch) => {
+//     dispatch(getContactMessagesInProcess())
 
-    ServiceContactMessages.getContactMessages()
-      .then((res) => {
-        const contactMessages = res.data
-        dispatch(getContactMessagesSuccess(contactMessages))
-      })
-      .catch((error) => {
-        dispatch(getContactMessagesFailure(error))
-      })
-  }
-}
+//     ServiceContactMessages.getContactMessages()
+//       .then((res) => {
+//         const contactMessages = res.data
+//         dispatch(getContactMessagesSuccess(contactMessages))
+//       })
+//       .catch((error) => {
+//         dispatch(getContactMessagesFailure(error))
+//       })
+//   }
+// }
 
 export function getContactMessage(id) {
   const getContactMessageInProcess = () => ({
@@ -558,34 +558,34 @@ export function removeContactMessage(id) {
   }
 }
 
-export function getTokens() {
-  const getTokensInProcess = () => ({
-    type: globalConstants.GET_TOKENS_IN_PROCESS
-  })
+// export function getTokens() {
+//   const getTokensInProcess = () => ({
+//     type: globalConstants.GET_TOKENS_IN_PROCESS
+//   })
 
-  const getTokensSuccess = (tokens) => ({
-    type: globalConstants.GET_TOKENS_SUCCESS,
-    tokens
-  })
+//   const getTokensSuccess = (tokens) => ({
+//     type: globalConstants.GET_TOKENS_SUCCESS,
+//     tokens
+//   })
 
-  const getTokensFailure = (error) => ({
-    type: globalConstants.GET_TOKENS_FAILURE,
-    error
-  })
+//   const getTokensFailure = (error) => ({
+//     type: globalConstants.GET_TOKENS_FAILURE,
+//     error
+//   })
 
-  return (dispatch) => {
-    dispatch(getTokensInProcess())
+//   return (dispatch) => {
+//     dispatch(getTokensInProcess())
 
-    ServiceTokens.getTokens()
-      .then((res) => {
-        const tokens = res.data
-        dispatch(getTokensSuccess(tokens))
-      })
-      .catch((error) => {
-        dispatch(getTokensFailure(error))
-      })
-  }
-}
+//     ServiceTokens.getTokens()
+//       .then((res) => {
+//         const tokens = res.data
+//         dispatch(getTokensSuccess(tokens))
+//       })
+//       .catch((error) => {
+//         dispatch(getTokensFailure(error))
+//       })
+//   }
+// }
 
 export function removeToken(id) {
   const removeTokenInProcess = () => ({
