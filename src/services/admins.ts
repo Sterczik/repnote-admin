@@ -1,13 +1,14 @@
+import { AxiosResponse } from 'axios'
 import Api from 'helpers/api'
 
-function login(email: string, password: string) {
+function login(email: string, password: string): Promise<AxiosResponse<any>> {
     return Api().post('/admins/login', {
         email,
         password
     })
 }
 
-function logout() {
+function logout(): Promise<AxiosResponse<any>> {
     const refreshToken = localStorage.getItem('refreshToken')
     const accessToken = localStorage.getItem('token')
   
@@ -19,11 +20,11 @@ function logout() {
     })
 }
 
-function refreshToken(refreshToken: string) {
+function refreshToken(refreshToken: string): Promise<AxiosResponse<any>> {
     return Api().post('admins/refreshToken', { refreshToken })
 }
 
-function changePassword(oldPassword: string, newPassword: string, newPasswordConfirm: string) {
+function changePassword(oldPassword: string, newPassword: string, newPasswordConfirm: string): Promise<AxiosResponse<any>> {
     const body = JSON.stringify({
       oldPassword: oldPassword,
       password: newPassword,

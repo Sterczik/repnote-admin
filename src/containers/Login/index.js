@@ -34,53 +34,51 @@ const LoginForm = ({
           <small>Sign in with credentials</small>
         </div>
         <FormikForm>
-          <Form role="form">
-            <FormGroup className="mb-3">
-              <InputGroup className="input-group-alternative">
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText>
-                    <i className="ni ni-email-83" />
-                  </InputGroupText>
-                </InputGroupAddon>
-                <Input
-                  placeholder="Email"
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={values.email}
-                  onChange={handleChange}
-                />
-              </InputGroup>
-              <div className="formik-invalid-feedback">
-                <ErrorMessage name="email" />
-              </div>
-            </FormGroup>
-            <FormGroup>
-              <InputGroup className="input-group-alternative">
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText>
-                    <i className="ni ni-lock-circle-open" />
-                  </InputGroupText>
-                </InputGroupAddon>
-                <Input
-                  placeholder="Password"
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={values.password}
-                  onChange={handleChange}
-                />
-              </InputGroup>
-              <div className="formik-invalid-feedback">
-                <ErrorMessage name="password" />
-              </div>
-            </FormGroup>
-            <div className="text-center">
-              <Button className="my-4" color="primary" type="submit">
-                Sign in
-              </Button>
+          <FormGroup className="mb-3">
+            <InputGroup className="input-group-alternative">
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>
+                  <i className="ni ni-email-83" />
+                </InputGroupText>
+              </InputGroupAddon>
+              <Input
+                placeholder="Email"
+                type="email"
+                id="email"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+              />
+            </InputGroup>
+            <div className="formik-invalid-feedback">
+              <ErrorMessage name="email" />
             </div>
-          </Form>
+          </FormGroup>
+          <FormGroup>
+            <InputGroup className="input-group-alternative">
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>
+                  <i className="ni ni-lock-circle-open" />
+                </InputGroupText>
+              </InputGroupAddon>
+              <Input
+                placeholder="Password"
+                type="password"
+                id="password"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+              />
+            </InputGroup>
+            <div className="formik-invalid-feedback">
+              <ErrorMessage name="password" />
+            </div>
+          </FormGroup>
+          <div className="text-center">
+            <Button className="my-4" color="primary" type="submit">
+              Sign in
+            </Button>
+          </div>
         </FormikForm>
       </CardBody>
     </Card>
